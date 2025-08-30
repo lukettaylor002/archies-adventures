@@ -1,10 +1,40 @@
 {% extends "layouts/base.njk" %}
 {% block content %}
-<article>
-  <h1>{{ title }}</h1>
-  {% if cover %}<img src="{{ cover }}" alt="" style="margin:.5rem 0 1rem">{% endif %}
-  <div class="content">{{ content | safe }}</div>
-  <hr class="dash">
-  <p><strong>Want to come along on my next adventure?</strong> Pop your email in the box below and I’ll send an update when a new story goes live! 🌍</p>
+
+<article class="aa-post">
+  <div class="container">
+
+    <a href="/adventures/" class="aa-post__back">← Back to Adventures</a>
+
+    {% if cover %}
+      <img class="aa-post__cover" src="{{ cover }}" alt="">
+    {% endif %}
+
+    <h1 class="aa-post__title">{{ title }}</h1>
+
+    {% if excerpt %}
+      <p class="aa-post__subtitle">{{ excerpt }}</p>
+    {% endif %}
+
+    <div class="aa-post__meta">
+      {% if tags and tags.length %}
+        <span class="chip chip--green">{{ tags[0] }}</span>
+      {% endif %}
+      <span class="aa-post__meta-chip">{{ page.date | date("MMM dd, yyyy") }}</span>
+      <span class="aa-post__meta-chip">{{ content | readTime }}</span>
+    </div>
+
+    <div class="aa-post__card content">
+      {{ content | safe }}
+    </div>
+
+    <div class="aa-post__footer">
+      <img src="/images/logo-badge.svg" alt="" class="aa-post__mini" width="28" height="28">
+      <p>Thanks for joining my adventure! ✨</p>
+      <a class="btn-2tone" href="/adventures/">Discover More Adventures</a>
+    </div>
+
+  </div>
 </article>
+
 {% endblock %}
