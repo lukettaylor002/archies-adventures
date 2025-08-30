@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ title ? title + " • " : "" }}{{ site.title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ description or site.tagline }}">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Pirsch: replace YOUR_PIRSCH_CODE below -->
+  <script defer src="https://api.pirsch.io/pa.js" id="pirschtag" data-code="YOUR_PIRSCH_CODE"></script>
+</head>
+<body>
+  {% include "partials/header.njk" %}
+  <main class="container">
+    {{ content | safe }}
+  </main>
+  {% include "partials/footer.njk" %}
+</body>
+</html>
