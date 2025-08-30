@@ -19,11 +19,30 @@
 
 <section>
   <h2>Latest Adventures</h2>
-  <div class="grid">
-    {% for post in collections.posts | reverse | slice(0,6) %}
-      {% set post = post %}{% include "partials/card.njk" %}
-    {% endfor %}
-  </div>
+<div class="grid">
+  {% for p in collections.posts | reverse | slice(0,6) %}
+    <article class="card">
+      <a href="{{ p.url }}">
+        {% if p.data.cover %}
+          <img src="{{ p.data.cover }}" alt="">
+        {% endif %}
+        <h3>{{ p.data.title }}</h3>
+
+        {% if p.data.tags %}
+          <div class="tags">
+            {% for t in p.data.tags %}
+              <span class="tag {{ "tag--" + t | slug }}">{{ t }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if p.data.excerpt %}
+          <p style="margin:.35rem 0 .1rem; opacity:.9">{{ p.data.excerpt }}</p>
+        {% endif %}
+      </a>
+    </article>
+  {% endfor %}
+</div>
 </section>
 
 {% endblock %}
