@@ -1,13 +1,26 @@
 {% extends "layouts/base.njk" %}
 {% block content %}
 
-<section class="hero-banner container">
-  <div class="hero-badge"><img src="/images/logo-badge.svg" alt="Archie’s Adventures"></div>
-  <h1>Welcome to <span class="accent">Archie’s</span> Adventures! 🌍</h1>
-  <p>Join me as I explore amazing places, discover cool things, and share incredible stories! Every adventure is a chance to learn something new. Ready to explore with me? <strong>Let’s go!</strong> 🚀</p>
-  <div class="hero-actions">
-    <a class="btn-2tone" href="/admin/#/collections/posts/new">＋ Start New Adventure</a>
-    <a class="btn-ghost" href="/adventures/">🧭 Explore Adventures</a>
+<section class="hero-pro">
+  <div class="hero-pro__inner container">
+    <div class="hero-pro__badge">
+      <img src="/images/logo-badge.svg" alt="Archie’s Adventures" width="64" height="64">
+    </div>
+
+    <h1 class="hero-pro__title">
+      Welcome to <span class="accent">Archie’s</span> Adventures! 🌍
+    </h1>
+
+    <p class="hero-pro__lead">
+      Join me as I explore amazing places, discover cool things, and share incredible stories!
+      Every adventure is a chance to learn something new. Ready to explore with me?
+      <strong>Let’s go!</strong> 🚀
+    </p>
+
+    <div class="hero-pro__actions">
+      <a class="btn-2tone btn-2tone--lg" href="/admin/#/collections/posts/new">＋ Start New Adventure</a>
+      <a class="btn-outline-green btn-outline-green--lg" href="/adventures/">🧭 Explore Adventures</a>
+    </div>
   </div>
 </section>
 
