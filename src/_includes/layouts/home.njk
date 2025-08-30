@@ -1,27 +1,42 @@
 {% extends "layouts/base.njk" %}
 {% block content %}
 
-<section class="hero-pro">
-  <div class="hero-pro__inner container">
-    <div class="hero-pro__badge">
+<section class="aa-hero">
+  <div class="aa-hero__bg"></div>
+
+  <div class="aa-hero__inner container">
+    <!-- Badge -->
+    <div class="aa-hero__badge">
       <img src="/images/logo-badge.svg" alt="Archie’s Adventures" width="64" height="64">
     </div>
 
-    <h1 class="hero-pro__title">
-      Welcome to <span class="accent">Archie’s</span> Adventures! 🌍
+    <!-- Title -->
+    <h1 class="aa-hero__title">
+      Welcome to <span class="aa-accent">Archie’s</span> Adventures! 🌍
     </h1>
 
-    <p class="hero-pro__lead">
-      Join me as I explore amazing places, discover cool things, and share incredible stories!
-      Every adventure is a chance to learn something new. Ready to explore with me?
-      <strong>Let’s go!</strong> 🚀
+    <!-- Lead -->
+    <p class="aa-hero__lead">
+      🌎 Join me as I explore amazing places, discover cool things, and share incredible
+      stories! Every adventure is a chance to learn something new. Ready to explore with
+      me?<span class="aa-pop">Let’s go!</span>🚀
     </p>
 
-    <div class="hero-pro__actions">
-      <a class="btn-2tone btn-2tone--lg" href="/admin/#/collections/posts/new">＋ Start New Adventure</a>
-      <a class="btn-outline-green btn-outline-green--lg" href="/adventures/">🧭 Explore Adventures</a>
+    <!-- Actions -->
+    <div class="aa-hero__actions">
+      <a class="btn-2tone aa-btn-lg" href="/admin/#/collections/posts/new">
+        <span class="aa-ico">＋</span> Start New Adventure
+      </a>
+
+      <a class="aa-btn-outline aa-btn-lg" href="/adventures/">
+        <span class="aa-ico">🧭</span> Explore Adventures
+      </a>
     </div>
   </div>
+
+  <!-- (Optional) small corner doodles; replace src with your art or remove these -->
+  <img class="aa-hero__orn aa-hero__orn--left"  src="/images/orn-tent.png"  alt="" aria-hidden="true">
+  <img class="aa-hero__orn aa-hero__orn--right" src="/images/orn-star.png"  alt="" aria-hidden="true">
 </section>
 
 <section class="container">
