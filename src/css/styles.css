@@ -340,3 +340,6 @@ hr.dash{margin:2rem 0;border:none;border-top:3px dashed var(--yellow)}
 
 /* Nice dashed rule option if you use <hr class="dash"> in posts */
 hr.dash{margin:1.5rem 0;border:none;border-top:3px dashed var(--yellow)}
+
+/* TEMP — remove after confirming */
+.aa-post__title::after { content:" ← v16"; color:#F57C00; font-weight:900; }
