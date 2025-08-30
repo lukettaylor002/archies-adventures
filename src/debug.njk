@@ -1,0 +1,16 @@
+---
+layout: layouts/base.njk
+title: Debug
+permalink: /debug/
+---
+
+<h2>Debug</h2>
+<p><strong>Posts found:</strong> {{ collections.posts | length }}</p>
+
+<ul>
+{% for p in collections.posts %}
+  <li><a href="{{ p.url }}">{{ p.data.title }}</a> — {{ p.date }}</li>
+{% endfor %}
+</ul>
+
+<p><strong>Has hero layout?</strong> {{ "yes" if collections.posts != null else "no" }}</p>
