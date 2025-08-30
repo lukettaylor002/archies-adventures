@@ -1,19 +1,18 @@
-module.exports = function(eleventyConfig) {
-  // Static assets
+module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/images": "images" });
   eleventyConfig.addPassthroughCopy({ "src/images/favicon.png": "favicon.png" });
-  eleventyConfig.addPassthroughCopy("admin");
   eleventyConfig.addPassthroughCopy("src/css");
+  eleventyConfig.addPassthroughCopy("admin");
 
-  // ✅ Posts collection (all markdown files in /src/posts)
-  eleventyConfig.addCollection("posts", (collectionApi) => {
-    return collectionApi.getFilteredByGlob("src/posts/*.md").sort((a, b) => a.date - b.date);
-  });
+  // IMPORTANT: the posts collection
+  eleventyConfig.addCollection("posts", (api) =>
+    api.getFilteredByGlob("src/posts/*.md").sort((a, b) => a.date - b.date)
+  );
 
   return {
     dir: { input: "src", includes: "_includes", data: "_data", output: "_site" },
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
-    templateFormats: ["md","njk","html"]
+    templateFormats: ["njk", "md", "html"]
   };
 };
