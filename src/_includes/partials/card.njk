@@ -2,7 +2,6 @@
   <a href="{{ post.url }}">
     {% if post.data.cover %}<img src="{{ post.data.cover }}" alt="">{% endif %}
     <h3>{{ post.data.title }}</h3>
-
     {% if post.data.tags %}
       <div class="tags">
         {% for t in post.data.tags %}
@@ -10,13 +9,6 @@
         {% endfor %}
       </div>
     {% endif %}
-
-    {% if post.date %}
-      <div class="meta">{{ post.date | date | default(post.data.date) }}</div>
-    {% endif %}
-
-    {% if post.data.excerpt %}
-      <p style="margin:.35rem 0 .1rem; opacity:.9">{{ post.data.excerpt }}</p>
-    {% endif %}
+    {% if post.data.excerpt %}<p style="margin:.35rem 0 .1rem; opacity:.9">{{ post.data.excerpt }}</p>{% endif %}
   </a>
 </article>
