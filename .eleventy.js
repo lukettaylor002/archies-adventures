@@ -1,13 +1,12 @@
 module.exports = function(eleventyConfig) {
+  // Static assets
   eleventyConfig.addPassthroughCopy({ "src/images": "images" });
   eleventyConfig.addPassthroughCopy("admin");
   eleventyConfig.addPassthroughCopy("src/css");
 
-  // 👉 ADD THIS: a proper "posts" collection (all markdown in /src/posts)
+  // ✅ Posts collection (all markdown files in /src/posts)
   eleventyConfig.addCollection("posts", (collectionApi) => {
-    return collectionApi.getFilteredByGlob("src/posts/*.md").sort((a,b) => {
-      return a.date - b.date; // oldest → newest (we reverse in templates)
-    });
+    return collectionApi.getFilteredByGlob("src/posts/*.md").sort((a, b) => a.date - b.date);
   });
 
   return {
