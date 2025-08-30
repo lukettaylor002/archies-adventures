@@ -1,5 +1,33 @@
 ---
-layout: layouts/home.njk
+layout: layouts/base.njk
 title: Home
-permalink: /
 ---
+
+<section class="hero">
+  <div class="hero__badge">
+    <img src="/images/logo-badge.svg" alt="Archie’s Adventures">
+  </div>
+  <div>
+    <h1>Welcome to Archie’s Adventures! 🌍</h1>
+    <p>Exploring the world, one story at a time.</p>
+    <div class="hero__buttons">
+      <a class="chip chip--green" href="/tags/nature/"><span>🏞</span><span>Nature</span></a>
+      <a class="chip chip--yellow" href="/tags/days-out/"><span>🎡</span><span>Days Out</span></a>
+      <a class="chip chip--blue" href="/tags/holidays/"><span>✈️</span><span>Holidays</span></a>
+      <a class="chip" href="/tags/fun/"><span>🎨</span><span>Fun Stuff</span></a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Latest Adventures</h2>
+  <div class="grid">
+    {% for post in collections.posts | reverse | slice(0,6) %}
+      <article class="card">
+        <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+        <p>{{ post.data.excerpt }}</p>
+        <p><small>{{ post.date | date("MMM d, yyyy") }}</small></p>
+      </article>
+    {% endfor %}
+  </div>
+</section>
