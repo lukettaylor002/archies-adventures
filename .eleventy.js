@@ -1,6 +1,7 @@
 module.exports = function(eleventyConfig) {
   // Static assets
   eleventyConfig.addPassthroughCopy({ "src/images": "images" });
+  eleventyConfig.addPassthroughCopy({ "src/images/favicon.png": "favicon.png" });
   eleventyConfig.addPassthroughCopy("admin");
   eleventyConfig.addPassthroughCopy("src/css");
 
