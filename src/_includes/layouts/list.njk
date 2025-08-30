@@ -3,7 +3,7 @@
   <h1>All Adventures</h1>
   <div class="grid">
     {% for post in collections.posts | reverse %}
-      {% include "partials/card.njk" %}
+      {% set post = post %}{% include "partials/card.njk" %}
     {% endfor %}
   </div>
 {% endblock %}
