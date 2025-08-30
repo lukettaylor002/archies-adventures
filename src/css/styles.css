@@ -148,40 +148,69 @@ hr.dash{margin:2rem 0;border:none;border-top:3px dashed var(--yellow)}
 }
 .btn-ghost:hover{ transform: translateY(-2px); }
 
-/* ===== Full-width App Bar (replaces ALL .header* rules) ===== */
-.appbar{
-  position: sticky; top: 0; z-index: 50;
+/* ===== Clean Full-Width Header ===== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
   width: 100%;
   background: #fff;
-  border-bottom: 3px solid rgba(0,0,0,.05);
-  box-shadow: 0 6px 20px rgba(0,0,0,.06);
+  border-bottom: 2px solid rgba(0,0,0,.05);
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
 }
-.appbar__inner{
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 1rem; padding: .75rem 1rem;
+
+.header__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: .9rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.appbar__brand{display:flex; flex-direction:column; gap:.15rem}
-.brand{display:flex; align-items:center; gap:.6rem; text-decoration:none}
-.brand__title{
+
+.header__left {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.header__left img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.header__brand {
   font-family: Fredoka, system-ui, sans-serif;
-  font-weight: 900; color: var(--green); font-size: 1.15rem;
-}
-.brand__tagline{opacity:.6; font-size:.9rem; margin-left: 44px;}
-
-.appbar__nav{display:flex; align-items:center; gap:.8rem}
-.appbar__nav a{font-weight:800; text-decoration:none; padding:.4rem .75rem; border-radius:999px}
-.appbar__nav a:hover{background:#f2f6ff}
-
-/* keep your existing .btn-2tone for the CTA */
-.appbar__cta{margin-left:.25rem}
-
-/* Responsive */
-@media (max-width: 720px){
-  .appbar__inner{flex-wrap:wrap; gap:.5rem}
-  .brand__tagline{display:none}
-  .appbar__nav{width:100%; justify-content:flex-end}
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: var(--green);
 }
 
+.header__tagline {
+  font-size: .85rem;
+  opacity: .6;
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header__right a {
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.header__right a:hover {
+  color: var(--blue);
+}
+
+.header__cta {
+  margin-left: .5rem;
+}
 /* ====== Hero banner (Base44 style) ====== */
 .hero-banner{
   margin: 8px auto 18px; padding: 24px 22px;
