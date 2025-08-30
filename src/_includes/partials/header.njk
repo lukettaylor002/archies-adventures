@@ -1,19 +1,19 @@
-<header class="header" role="banner">
-  <div class="header__inner container">
-    <div class="header__left">
-      <a href="/" class="header__logo" aria-label="Home">
+<header class="appbar" role="banner">
+  <div class="appbar__inner container">
+    <!-- Left: brand (you can add a small left-nav later if you want) -->
+    <div class="appbar__brand">
+      <a href="/" class="brand" aria-label="Home">
         <img src="/images/logo-badge.svg" alt="" width="36" height="36" loading="eager">
+        <span class="brand__title">Archie’s Adventures</span>
       </a>
-      <div class="header__brand">
-        <a href="/" style="font-family:Fredoka;font-weight:900;color:var(--green);font-size:1.15rem;">Archie’s Adventures</a>
-        <small>Exploring the world, one story at a time</small>
-      </div>
+      <small class="brand__tagline">Exploring the world, one story at a time</small>
     </div>
 
-    <nav class="nav" aria-label="Main">
-      <a class="pill" href="/">Home</a>
-      <a class="pill" href="/adventures/">All Adventures</a>
-      <a class="btn-2tone cta" href="/admin/#/collections/posts/new">＋ New Adventure</a>
+    <!-- Right: main nav + CTA -->
+    <nav class="appbar__nav" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a class="btn-2tone appbar__cta" href="/adventures/">View all articles</a>
     </nav>
   </div>
 </header>
