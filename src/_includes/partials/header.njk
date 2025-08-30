@@ -1,19 +1,20 @@
-<header class="appbar" role="banner">
-  <div class="appbar__inner container">
-    <!-- Left: brand (you can add a small left-nav later if you want) -->
-    <div class="appbar__brand">
-      <a href="/" class="brand" aria-label="Home">
-        <img src="/images/logo-badge.svg" alt="" width="36" height="36" loading="eager">
-        <span class="brand__title">Archie’s Adventures</span>
-      </a>
-      <small class="brand__tagline">Exploring the world, one story at a time</small>
+<header class="header">
+  <div class="header__inner">
+    <!-- Left logo/brand -->
+    <div class="header__left">
+      <img src="/images/logo-badge.svg" alt="Archie’s Adventures">
+      <div>
+        <div class="header__brand">Archie’s Adventures</div>
+        <div class="header__tagline">Exploring the world, one story at a time</div>
+      </div>
     </div>
 
-    <!-- Right: main nav + CTA -->
-    <nav class="appbar__nav" aria-label="Main navigation">
+    <!-- Right nav -->
+    <nav class="header__right">
       <a href="/">Home</a>
+      <a href="/adventures/">All Adventures</a>
       <a href="/about/">About</a>
-      <a class="btn-2tone appbar__cta" href="/adventures/">View all articles</a>
+      <a href="/adventures/" class="btn-2tone header__cta">View all articles</a>
     </nav>
   </div>
 </header>
