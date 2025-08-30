@@ -1,13 +1,24 @@
-<footer class="footer">
-  <div class="container">
-    <p style="font-family:Fredoka;color:var(--green);font-size:1.1rem;margin:0 0 .75rem">
-      Thanks for visiting Archie’s Adventures 🥾🌲 — see you on the next trip!
-    </p>
-    <!-- Buttondown example (replace ARCHIE_HANDLE) -->
-    <form action="https://buttondown.email/api/emails/embed-subscribe/ARCHIE_HANDLE" method="post" target="popupwindow" class="embeddable-buttondown-form">
-      <input type="email" name="email" placeholder="Your email" required style="padding:.6rem;border-radius:12px;border:2px solid var(--green);margin-right:.5rem">
-      <button class="btn btn-primary" type="submit">Subscribe</button>
+<footer class="footer" role="contentinfo" aria-label="Site footer">
+  <div class="container footer__inner">
+
+    <div class="footer__brand">
+      <img class="footer__badge" src="/images/logo-badge.svg" alt="Archie’s Adventures" width="44" height="44">
+      <h3 class="footer__title" style="font-family:Fredoka;color:var(--green);margin:.3rem 0 0;">Archie’s Adventures</h3>
+      <p class="footer__tagline">Join Archie on amazing adventures around the world! 🌍</p>
+    </div>
+
+    <!-- Subscribe (Buttondown example). Swap the action with your provider -->
+    <form class="subscribe" action="https://buttondown.email/api/emails/embed-subscribe/ARCHIE" method="post" target="_blank">
+      <input aria-label="Your email" type="email" name="email" placeholder="Your email" required>
+      <button class="btn-2tone" type="submit">Subscribe</button>
     </form>
-    <p style="opacity:.7;margin-top:1rem;font-size:.9rem">© {{ site.year }} Archie’s Adventures</p>
+
+    <ul class="footer__chips" aria-label="Site highlights" style="list-style:none;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:8px 0 0;padding:0">
+      <li class="footer__chip">🍕 Made with love</li>
+      <li class="footer__chip">🧭 Exploring since 2024</li>
+      <li class="footer__chip">⭐ Adventure awaits</li>
+    </ul>
+
+    <p class="footer__legal">© {{ site.year }} Archie’s Adventures</p>
   </div>
 </footer>
