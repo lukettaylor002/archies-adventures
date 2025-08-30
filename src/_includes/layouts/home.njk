@@ -1,16 +1,29 @@
 {% extends "layouts/base.njk" %}
 {% block content %}
+
 <section class="hero">
-  <h1>Welcome!</h1>
-  <p>{{ site.tagline }}</p>
-  <a class="btn" href="/adventures/">Browse adventures</a>
+  <div class="hero__badge">
+    <img src="/images/logo-badge.svg" alt="Archie’s Adventures">
+  </div>
+  <div>
+    <h1>Welcome to Archie’s Adventures</h1>
+    <p>{{ site.tagline }}</p>
+    <div class="hero__buttons">
+      <a class="chip chip--green" href="/adventures/"><span>🏞</span><span>Nature</span></a>
+      <a class="chip chip--yellow" href="/adventures/"><span>🎡</span><span>Days Out</span></a>
+      <a class="chip chip--blue" href="/adventures/"><span>✈️</span><span>Holidays</span></a>
+      <a class="chip" href="/adventures/"><span>🎨</span><span>Fun Stuff</span></a>
+    </div>
+  </div>
 </section>
+
 <section>
   <h2>Latest Adventures</h2>
   <div class="grid">
     {% for post in collections.posts | reverse | slice(0,6) %}
-      {% include "partials/card.njk" %}
+      {% set post = post %}{% include "partials/card.njk" %}
     {% endfor %}
   </div>
 </section>
+
 {% endblock %}
