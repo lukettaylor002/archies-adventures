@@ -1,11 +1,19 @@
-<header class="header">
-  <div class="header__logo">
-    <img src="/images/logo-badge.svg" alt="Archie's Adventures" width="44" height="44">
-    <strong style="font-family:Fredoka;font-size:1.25rem;color:var(--green)">Archie’s Adventures</strong>
+<header class="header" role="banner">
+  <div class="header__inner container">
+    <div class="header__left">
+      <a href="/" class="header__logo" aria-label="Home">
+        <img src="/images/logo-badge.svg" alt="" width="36" height="36" loading="eager">
+      </a>
+      <div class="header__brand">
+        <a href="/" style="font-family:Fredoka;font-weight:900;color:var(--green);font-size:1.15rem;">Archie’s Adventures</a>
+        <small>Exploring the world, one story at a time</small>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Main">
+      <a class="pill" href="/">Home</a>
+      <a class="pill" href="/adventures/">All Adventures</a>
+      <a class="btn-2tone cta" href="/admin/#/collections/posts/new">＋ New Adventure</a>
+    </nav>
   </div>
-  <nav class="nav" aria-label="Primary">
-    <a href="/">Home</a>
-    <a href="/adventures/">All Adventures</a>
-    <a href="/about/">About</a>
-  </nav>
 </header>
