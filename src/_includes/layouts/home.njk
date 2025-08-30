@@ -1,48 +1,36 @@
 {% extends "layouts/base.njk" %}
 {% block content %}
 
-<section class="hero">
-  <div class="hero__badge">
-    <img src="/images/logo-badge.svg" alt="Archie’s Adventures">
-  </div>
-  <div>
-    <h1>Welcome to Archie’s Adventures</h1>
-    <p>{{ site.tagline }}</p>
-    <div class="hero__buttons">
-      <a class="chip chip--green" href="/adventures/"><span>🏞</span><span>Nature</span></a>
-      <a class="chip chip--yellow" href="/adventures/"><span>🎡</span><span>Days Out</span></a>
-      <a class="chip chip--blue" href="/adventures/"><span>✈️</span><span>Holidays</span></a>
-      <a class="chip" href="/adventures/"><span>🎨</span><span>Fun Stuff</span></a>
-    </div>
+<section class="hero-banner container">
+  <div class="hero-badge"><img src="/images/logo-badge.svg" alt="Archie’s Adventures"></div>
+  <h1>Welcome to <span class="accent">Archie’s</span> Adventures! 🌍</h1>
+  <p>Join me as I explore amazing places, discover cool things, and share incredible stories! Every adventure is a chance to learn something new. Ready to explore with me? <strong>Let’s go!</strong> 🚀</p>
+  <div class="hero-actions">
+    <a class="btn-2tone" href="/admin/#/collections/posts/new">＋ Start New Adventure</a>
+    <a class="btn-ghost" href="/adventures/">🧭 Explore Adventures</a>
   </div>
 </section>
 
-<section>
+<section class="container">
   <h2>Latest Adventures</h2>
-<div class="grid">
-  {% for p in collections.posts | reverse | slice(0,6) %}
-    <article class="card">
-      <a href="{{ p.url }}">
-        {% if p.data.cover %}
-          <img src="{{ p.data.cover }}" alt="">
-        {% endif %}
-        <h3>{{ p.data.title }}</h3>
-
-        {% if p.data.tags %}
-          <div class="tags">
-            {% for t in p.data.tags %}
-              <span class="tag {{ "tag--" + t | slug }}">{{ t }}</span>
-            {% endfor %}
-          </div>
-        {% endif %}
-
-        {% if p.data.excerpt %}
-          <p style="margin:.35rem 0 .1rem; opacity:.9">{{ p.data.excerpt }}</p>
-        {% endif %}
-      </a>
-    </article>
-  {% endfor %}
-</div>
+  <div class="grid">
+    {% for p in collections.posts | reverse | slice(0,6) %}
+      <article class="card">
+        <a href="{{ p.url }}">
+          {% if p.data.cover %}<img src="{{ p.data.cover }}" alt="">{% endif %}
+          <h3>{{ p.data.title }}</h3>
+          {% if p.data.tags %}
+            <div class="tags">
+              {% for t in p.data.tags %}
+                <span class="tag {{ "tag--" + t | slug }}">{{ t }}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+          {% if p.data.excerpt %}<p style="margin:.35rem 0 .1rem; opacity:.9">{{ p.data.excerpt }}</p>{% endif %}
+        </a>
+      </article>
+    {% endfor %}
+  </div>
 </section>
 
 {% endblock %}
