@@ -240,7 +240,7 @@ html.nav-open, html.nav-open body{overflow:hidden}
 
 /* ====== Hero banner (Base44 style) ====== */
 .hero-banner{
-  margin: 8px auto 18px; padding: 24px 22px;
+  padding: 24px 22px;
   background: linear-gradient(180deg,#f4fbff 0%,#fff 60%, #fff3df 100%);
   border-radius: 28px; box-shadow: var(--shadow-md);
   text-align:center; position:relative; overflow:hidden;
