@@ -365,6 +365,8 @@ html.nav-open, html.nav-open body{overflow:hidden}
   color: var(--green);
   background-color: #fff; 
   box-shadow: var(--shadow-md);
+  border-radius:12px;
+  margin: 3rem 0rem;
 }
 .aa-sub__card p{ margin: 0 0 1rem; }
 .aa-sub__card strong{ color: var(--text); }
