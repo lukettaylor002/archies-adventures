@@ -361,8 +361,7 @@ html.nav-open, html.nav-open body{overflow:hidden}
 
 /* Content card */
 .aa-post__card{
-  background:#fff; border-radius: 12px; padding: 2rem; margin-top: 3rem;
-  box-shadow: var(--shadow-lg);
+ padding: 2rem; margin-top: 3rem;
   color: var(--green);
 }
 .aa-post__card p{ margin: 0 0 1rem; }
