@@ -261,17 +261,36 @@ hr.dash{margin:2rem 0;border:none;border-top:3px dashed var(--yellow)}
 /* --- Mobile layout --- */
 @media (max-width: 820px){
   .nav-toggle{display:block}
-  .header__right{
-    position:absolute; left:0; right:0; top:100%;
-    background:#fff; border-bottom:2px solid rgba(0,0,0,.06);
-    display:block;
-    padding: .6rem 1rem;
-    box-shadow:0 10px 28px rgba(0,0,0,.08);
-    max-height:0; overflow:hidden; transition:max-height .25s ease;
-  }
-  .header__right.open{ max-height: 380px; }
-  .header__right a{ display:block; padding:.55rem .25rem }
-  .header__cta{ display:block; margin:.35rem 0 0; text-align:center }
+/* Base state (closed menu) */
+.header__right {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background: #fff;
+  border-bottom: 2px solid rgba(0,0,0,.06);
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease-in-out, padding .3s ease-in-out;
+  padding: 0; /* no whitespace when closed */
+  box-shadow: 0 10px 28px rgba(0,0,0,.08);
+}
+
+/* Open state (burger menu expanded) */
+.header__right.open {
+  max-height: 380px;
+  padding: .6rem 1rem; /* only apply padding when open */
+}
+
+.header__right a {
+  display: block;
+  padding: .55rem .25rem;
+}
+.header__cta {
+  display: block;
+  margin: .35rem 0 0;
+  text-align: center;
 }
 html.nav-open, html.nav-open body{overflow:hidden}
 
