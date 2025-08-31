@@ -35,12 +35,18 @@ title: Home
 </section>
 
 <!-- Latest Adventures -->
-<section>
-  <h2>Latest Adventures</h2>
+<section class="container">
+  <h1>All Adventures</h1>
   <div class="grid">
-    {% for post in collections.posts | reverse | slice(0,6) %}
-      {% set p = post %}
-      {% include "partials/card.njk" %}
+    {% for p in collections.posts | reverse %}
+      <article class="card">
+        <a href="{{ p.url }}">
+          {% if p.data.cover %}<img src="{{ p.data.cover }}" alt="">{% endif %}
+          <h3>{{ p.data.title }}</h3>
+          {% if p.data.excerpt %}<p class="meta">{{ p.data.excerpt }}</p>{% endif %}
+          <p class="meta">{{ p.date | date("MMM d, yyyy") }}</p>
+        </a>
+      </article>
     {% endfor %}
   </div>
 </section>
