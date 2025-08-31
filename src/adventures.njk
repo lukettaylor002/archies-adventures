@@ -4,108 +4,97 @@ layout: layouts/base.njk
 permalink: /adventures/
 ---
 
-<h1>All Adventures</h1>
+<section class="container">
+  <h1>All Adventures</h1>
 
-<!-- Filter bar -->
-<div class="aa-filter" role="region" aria-label="Filter adventures">
-  <div class="aa-filter__scroller">
-    <button class="chip" data-filter="all" aria-pressed="true">All</button>
-    <button class="chip chip--green" data-filter="nature">Nature</button>
-    <button class="chip chip--yellow" data-filter="days out">Days Out</button>
-    <button class="chip chip--blue" data-filter="holidays">Holidays</button>
-    <button class="chip" data-filter="fun stuff">Fun Stuff</button>
-  </div>
-
-  <div class="aa-filter__search">
-    <input id="aa-search" type="search" placeholder="Search adventures…" aria-label="Search adventures">
-  </div>
-</div>
-
-<!-- Results grid -->
-<div id="aa-grid" class="aa-grid" data-empty="No adventures match your filters.">
-  {% for item in collections.posts | reverse %}
-    {% set tags = (item.data.tags or []) | join(",") | lower %}
-    <div class="aa-cardwrap" data-tags="{{ tags }}" data-title="{{ item.data.title | lower }}">
-      {% set post = item %}{% include "partials/card.njk" %}
+  <!-- Filter bar -->
+  <div class="aa-filterbar">
+    <div class="aa-chips">
+      <button class="chip" data-filter="all" aria-pressed="true">All</button>
+      <button class="chip" data-filter="nature">Nature</button>
+      <button class="chip" data-filter="days out">Days Out</button>
+      <button class="chip" data-filter="holidays">Holidays</button>
+      <button class="chip" data-filter="fun stuff">Fun Stuff</button>
     </div>
-  {% endfor %}
-</div>
 
-<!-- Tiny filtering script -->
+    <input id="aa-q" class="aa-search" type="search" placeholder="Search adventures…" aria-label="Search adventures">
+  </div>
+
+  <!-- Cards -->
+  <div id="cards" class="aa-grid">
+    {% for post in collections.posts | reverse %}
+      {% set cover = post.data.cover or '/images/sample.jpg' %}
+      {% set tags = (post.data.tags or []) | join(',') | lower %}
+
+      <a class="aa-card"
+         href="{{ post.url }}"
+         data-post-tags="{{ tags }}"
+         data-post-title="{{ post.data.title | lower }}"
+         data-post-excerpt="{{ (post.data.excerpt or '') | lower }}">
+
+        <div class="aa-card__media">
+          <img src="{{ cover }}" alt="">
+        </div>
+
+        <div class="aa-card__body">
+          <div class="aa-card__toprow">
+            {% if post.data.tags and post.data.tags.length %}
+              <span class="aa-pill">{{ post.data.tags[0] }}</span>
+            {% endif %}
+            <span class="aa-meta">{{ post.templateContent | readTime }}</span>
+          </div>
+
+          <h3 class="aa-card__title">{{ post.data.title }}</h3>
+
+          {% if post.data.excerpt %}
+            <p class="aa-card__excerpt">{{ post.data.excerpt }}</p>
+          {% endif %}
+
+          <div class="aa-card__meta">
+            <span class="aa-meta">{{ post.date | date("dd/MM/yyyy") }}</span>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+
+  {% if collections.posts | length == 0 %}
+    <p>No adventures yet. Check back soon!</p>
+  {% endif %}
+</section>
+
 <script>
-(function(){
-  const grid   = document.getElementById('aa-grid');
-  const cards  = Array.from(grid.querySelectorAll('.aa-cardwrap'));
-  const chips  = Array.from(document.querySelectorAll('.aa-filter [data-filter]'));
-  const search = document.getElementById('aa-search');
+  (function () {
+    const cards = Array.from(document.querySelectorAll('#cards .aa-card'));
+    const chips = Array.from(document.querySelectorAll('.aa-chips .chip'));
+    const q = document.getElementById('aa-q');
 
-  function applyFilters() {
-    const activeChip = chips.find(c => c.getAttribute('aria-pressed') === 'true');
-    const tag = activeChip ? activeChip.dataset.filter : 'all';
-    const q = (search.value || '').trim().toLowerCase();
+    function applyFilters() {
+      const active = chips.find(c => c.getAttribute('aria-pressed') === 'true');
+      const tag = active ? active.dataset.filter : 'all';
+      const query = (q.value || '').trim().toLowerCase();
 
-    let visibleCount = 0;
-    cards.forEach(wrap => {
-      const tags  = (wrap.dataset.tags || '');
-      const title = (wrap.dataset.title || '');
-      const tagMatch = (tag === 'all') || tags.split(',').includes(tag);
-      const textMatch = !q || title.includes(q);
-      const show = tagMatch && textMatch;
-      wrap.style.display = show ? '' : 'none';
-      if (show) visibleCount++;
+      cards.forEach(card => {
+        const tags = card.dataset.postTags || '';
+        const title = card.dataset.postTitle || '';
+        const excerpt = card.dataset.postExcerpt || '';
+        const tagMatch = (tag === 'all') || tags.split(',').includes(tag);
+        const textMatch = !query || title.includes(query) || excerpt.includes(query);
+        card.style.display = (tagMatch && textMatch) ? '' : 'none';
+      });
+    }
+
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => c.setAttribute('aria-pressed', 'false'));
+        chip.setAttribute('aria-pressed', 'true');
+        applyFilters();
+      });
     });
 
-    // empty state
-    if (!visibleCount) {
-      grid.dataset.state = 'empty';
-      if (!grid.querySelector('.aa-empty')) {
-        const msg = document.createElement('p');
-        msg.className = 'aa-empty';
-        msg.textContent = grid.dataset.empty || 'No results';
-        grid.appendChild(msg);
-      }
-    } else {
-      grid.dataset.state = 'ok';
-      const msg = grid.querySelector('.aa-empty');
-      if (msg) msg.remove();
-    }
+    q.addEventListener('input', applyFilters);
 
-    // update URL hash (optional)
-    if (tag && tag !== 'all') {
-      history.replaceState(null, '', '#tag=' + encodeURIComponent(tag) + (q ? '&q=' + encodeURIComponent(q) : ''));
-    } else {
-      history.replaceState(null, '', q ? '#q=' + encodeURIComponent(q) : ' ');
-    }
-  }
-
-  // chip clicks
-  chips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      chips.forEach(c => c.setAttribute('aria-pressed','false'));
-      chip.setAttribute('aria-pressed','true');
-      applyFilters();
-    });
-  });
-
-  // search input
-  search.addEventListener('input', () => applyFilters());
-
-  // initialise from URL hash (? or #)
-  const hash = location.hash.slice(1);
-  if (hash) {
-    const params = new URLSearchParams(hash);
-    const t = params.get('tag');
-    const q = params.get('q');
-    if (t) {
-      const match = chips.find(c => c.dataset.filter === decodeURIComponent(t));
-      if (match) {
-        chips.forEach(c => c.setAttribute('aria-pressed','false'));
-        match.setAttribute('aria-pressed','true');
-      }
-    }
-    if (q) search.value = decodeURIComponent(q);
-  }
-
-  applyFilters();
-})();
+    // show everything by default
+    applyFilters();
+  })();
 </script>
