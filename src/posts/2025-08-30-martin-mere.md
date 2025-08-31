@@ -54,7 +54,7 @@ Afterwards the otters went back to bed — I think they were tired.
 
 On the way to the adventure playground we passed the flamingos. I think there were about **100 flamingos**! 
 
-![Otters](/images/martin-mere-1.jpg)
+![Otters](/images/Martin Mere 1.jpeg)
 ---
 
 ## 🛝 Adventure Playground
