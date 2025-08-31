@@ -1,0 +1,75 @@
+---
+title: About Archie
+layout: layouts/base.njk
+permalink: /about/
+---
+
+<section class="container">
+  <!-- Hero-style intro -->
+  <div class="hero-banner">
+    <div class="hero-badge">
+      <img src="/images/logo-badge.svg" alt="Archie’s Adventures badge" width="64" height="64">
+    </div>
+    <h1>Hi, I’m <span class="accent">Archie</span>! 👋</h1>
+    <p>I’m a kid who loves days out, holidays, animals and trying new things. This blog is where I share my adventures so other kids can find cool stuff to do too!</p>
+    <div class="hero-actions">
+      <a class="btn-2tone aa-btn-lg" href="/adventures/"><span class="aa-ico">🧭</span>View all adventures</a>
+      <a class="btn-ghost aa-btn-lg" href="#subscribe"><span class="aa-ico">📬</span>Join the Adventure Club</a>
+    </div>
+  </div>
+
+  <!-- Two-column content -->
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));align-items:start">
+    <article class="aa-post__card">
+      <h2>What you’ll find here</h2>
+      <ul>
+        <li><strong>Days out</strong> to zoos, museums, parks and castles 🏰</li>
+        <li><strong>Nature</strong> walks, pond dipping and animal spotting 🦦</li>
+        <li><strong>Holidays</strong> by the sea and in the countryside 🌊</li>
+        <li><strong>Fun stuff</strong> like trails, playgrounds and rides 🎢</li>
+      </ul>
+
+      <h3>How I rate things</h3>
+      <p>I give each trip a score out of 10 and tell you the best bits, what to bring, and tips for kids.</p>
+
+      <h3>Who writes the posts?</h3>
+      <p>I do! (With a little help from my grown-ups for photos and spelling.)</p>
+    </article>
+
+    <aside class="aa-post__card" style="--card-gap:.75rem">
+      <h2>Fun facts about me</h2>
+      <ul>
+        <li>Favourite animals: otters and puffins 🦦🦜</li>
+        <li>Top snacks on trips: ham sandwiches and fruit 🍎</li>
+        <li>Best playground item: the BIG slide 🛝</li>
+        <li>Superpower: spotting cool trails and maps 🗺️</li>
+      </ul>
+
+      <h3>My adventure backpack</h3>
+      <ul>
+        <li>Binoculars 🔭</li>
+        <li>Refillable water bottle 💧</li>
+        <li>Notebook + pencil ✏️</li>
+        <li>Waterproofs (just in case) 🌧️</li>
+      </ul>
+    </aside>
+  </div>
+
+  <!-- Parent / Safety note -->
+  <div class="aa-post__card" style="margin-top:1rem">
+    <h2>A note for parents & carers</h2>
+    <p>This is a kid-friendly blog run with help from family. We don’t share personal details or exact times and we only post photos we’re happy to share. If you have any questions or collaboration ideas for family-friendly days out, feel free to get in touch.</p>
+    <p style="opacity:.85">Email: <a href="mailto:hello@archiesadventures.blog">hello@archiesadventures.blog</a></p>
+  </div>
+
+  <!-- Subscribe -->
+  <div id="subscribe" class="aa-post__card" style="margin-top:1rem; text-align:center">
+    <h2>Join the Adventure Club 📬</h2>
+    <p>Don’t miss the next trip! Get new posts in your inbox.</p>
+    <!-- Replace the action with your provider (Buttondown example below) -->
+    <form class="subscribe" action="https://buttondown.email/api/emails/embed-subscribe/ARCHIE" method="post" target="_blank">
+      <input aria-label="Your email" type="email" name="email" placeholder="Your email" required>
+      <button class="btn-2tone" type="submit">Subscribe</button>
+    </form>
+  </div>
+</section>
