@@ -1,69 +1,55 @@
-<footer class="aa-footer" role="contentinfo" aria-label="Site footer">
-  <div class="aa-footer__wave" aria-hidden="true"></div>
+<footer class="aa-footer3" role="contentinfo" aria-label="Site footer">
+  <!-- soft adventure pattern -->
+  <div class="aa-footer3__bg" aria-hidden="true"></div>
 
-  <div class="container aa-footer__inner">
-    <!-- Brand (logo only) -->
-    <div class="aa-footer__brand">
-      <img src="/images/logo-badge.svg" alt="" width="120" height="120" />
-    </div>
-
-    <!-- About -->
-    <div class="aa-footer__about">
-      <h3>About the blog</h3>
-      <p>
+  <div class="container aa-footer3__grid">
+    <!-- Col 1: Logo (big) + About -->
+    <section class="aa-foot__brand">
+      <img src="/images/logo-badge.svg" alt="" width="120" height="120" class="aa-foot__logo">
+      <h3 class="aa-foot__h">About the blog</h3>
+      <p class="aa-foot__p">
         Archie shares kid-friendly adventures, days out, and curious discoveries.
         Every story is a chance to learn something new—come explore with us! 🌍
       </p>
-    </div>
+    </section>
 
-    <!-- Nav + Social + Mini subscribe -->
-    <nav class="aa-footer__nav" aria-label="Footer">
-      <h3>Explore</h3>
-      <ul>
+    <!-- Col 2: Navigation -->
+    <nav class="aa-foot__nav" aria-label="Footer navigation">
+      <h3 class="aa-foot__h">Explore</h3>
+      <ul class="aa-foot__list">
         <li><a href="/">Home</a></li>
         <li><a href="/adventures/">All Adventures</a></li>
         <li><a href="/about/">About</a></li>
         <li><a href="/posts/">Archive</a></li>
       </ul>
-
-      <!-- Socials -->
-      <div class="aa-footer__socials" aria-label="Follow Archie">
-        <a href="https://instagram.com/" aria-label="Instagram" class="aa-social">
-          <!-- IG -->
-          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm10 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 .001 6.001A3 3 0 0 0 12 9z"/></svg>
-        </a>
-        <a href="https://twitter.com/" aria-label="Twitter/X" class="aa-social">
-          <!-- X -->
-          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M3 3h3.6l5.2 7.3L16.6 3H21l-8 10.7L21 21h-3.6l-5.6-7.8L7.4 21H3l8.1-10.3z"/></svg>
-        </a>
-        <a href="https://youtube.com/" aria-label="YouTube" class="aa-social">
-          <!-- YT -->
-          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M23 7.5a4 4 0 0 0-2.8-2.8C18.2 4 12 4 12 4s-6.2 0-8.2.7A4 4 0 0 0 1 7.5 41 41 0 0 0 0 12a41 41 0 0 0 1 4.5 4 4 0 0 0 2.8 2.8C5.8 20 12 20 12 20s6.2 0 8.2-.7a4 4 0 0 0 2.8-2.8A41 41 0 0 0 24 12a41 41 0 0 0-1-4.5zM10 15V9l5 3-5 3z"/></svg>
-        </a>
-        <a href="mailto:hello@example.com" aria-label="Email" class="aa-social">
-          <!-- Mail -->
-          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 4-8 5-8-5V6l8 5 8-5z"/></svg>
-        </a>
-      </div>
-
-      <!-- Mini subscribe (Netlify) -->
-      <form name="newsletter-mini" method="POST" data-netlify="true"
-            netlify-honeypot="bot-field" action="/thanks"
-            class="aa-footer__miniform">
-        <input type="hidden" name="form-name" value="newsletter-mini">
-        <p class="sr-only"><label>Don’t fill this: <input name="bot-field"></label></p>
-
-        <div class="aa-minirow">
-          <input type="email" name="email" aria-label="Your email"
-                 placeholder="Your email" required>
-          <button class="aa-mini-btn" type="submit">Subscribe</button>
-        </div>
-        <small class="aa-mini-note">No spam. Unsubscribe anytime.</small>
-      </form>
     </nav>
+
+    <!-- Col 3: Subscribe -->
+    <section class="aa-foot__sub">
+      <h3 class="aa-foot__h">Subscribe</h3>
+      <p class="aa-foot__p">Get new adventures by email. No spam. Unsubscribe anytime.</p>
+
+      <!-- Netlify Forms -->
+      <form name="newsletter" method="POST" data-netlify="true"
+            netlify-honeypot="bot-field" action="/thanks" class="aa-sub__form">
+        <input type="hidden" name="form-name" value="newsletter">
+        <p class="sr-only"><label>Don’t fill this out: <input name="bot-field"></label></p>
+
+        <div class="aa-sub__row">
+          <input aria-label="Your email" type="email" name="email" placeholder="Your email" required>
+          <button class="aa-sub__btn" type="submit">Subscribe</button>
+        </div>
+
+        <!-- Optional consent line under the input row -->
+        <label class="aa-sub__agree">
+          <input type="checkbox" name="agree" required>
+          I agree to receive adventure updates ✨
+        </label>
+      </form>
+    </section>
   </div>
 
-  <div class="aa-footer__legal">
+  <div class="aa-footer3__legal">
     <div class="container">
       <p>© {{ site.year }} Archie’s Adventures • Made with 🍕 & curiosity</p>
     </div>
