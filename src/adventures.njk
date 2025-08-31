@@ -8,93 +8,78 @@ permalink: /adventures/
   <h1>All Adventures</h1>
 
   <!-- Filter bar -->
-  <div class="aa-filterbar">
-    <div class="aa-chips">
-      <button class="chip" data-filter="all" aria-pressed="true">All</button>
-      <button class="chip" data-filter="nature">Nature</button>
-      <button class="chip" data-filter="days out">Days Out</button>
-      <button class="chip" data-filter="holidays">Holidays</button>
-      <button class="chip" data-filter="fun stuff">Fun Stuff</button>
+  <div class="aa-filter">
+    <div class="aa-filter__scroller">
+      <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" class="chip" data-filter="nature">Nature</button>
+      <button type="button" class="chip" data-filter="days out">Days Out</button>
+      <button type="button" class="chip" data-filter="holidays">Holidays</button>
+      <button type="button" class="chip" data-filter="fun stuff">Fun Stuff</button>
     </div>
 
-    <input id="aa-q" class="aa-search" type="search" placeholder="Search adventures…" aria-label="Search adventures">
+    <div class="aa-filter__search">
+      <input id="aa-q" type="search" placeholder="Search adventures…" aria-label="Search adventures">
+    </div>
   </div>
 
-  <!-- Cards -->
-  <div id="cards" class="aa-grid">
-    {% for post in collections.posts | reverse %}
-      {% set cover = post.data.cover or '/images/sample.jpg' %}
-      {% set tags = (post.data.tags or []) | join(',') | lower %}
-
-      <a class="aa-card"
-         href="{{ post.url }}"
-         data-post-tags="{{ tags }}"
-         data-post-title="{{ post.data.title | lower }}"
-         data-post-excerpt="{{ (post.data.excerpt or '') | lower }}">
-
-        <div class="aa-card__media">
-          <img src="{{ cover }}" alt="">
-        </div>
-
-        <div class="aa-card__body">
-          <div class="aa-card__toprow">
-            {% if post.data.tags and post.data.tags.length %}
-              <span class="aa-pill">{{ post.data.tags[0] }}</span>
-            {% endif %}
-            <span class="aa-meta">{{ post.templateContent | readTime }}</span>
-          </div>
-
-          <h3 class="aa-card__title">{{ post.data.title }}</h3>
-
-          {% if post.data.excerpt %}
-            <p class="aa-card__excerpt">{{ post.data.excerpt }}</p>
-          {% endif %}
-
-          <div class="aa-card__meta">
-            <span class="aa-meta">{{ post.date | date("dd/MM/yyyy") }}</span>
-          </div>
-        </div>
-      </a>
+  <!-- Cards grid -->
+  <div id="aa-grid" class="aa-grid">
+    {# Wrap each card so the filter can show/hide them #}
+    {% for p in collections.posts | reverse %}
+      <div class="aa-cardwrap"
+           data-tags="{{ (p.data.tags or []) | join(',') | lower }}"
+           data-title="{{ (p.data.title or '') | lower }}"
+           data-excerpt="{{ (p.data.excerpt or '') | lower }}">
+        {% include "partials/card.njk" post=p %}
+      </div>
     {% endfor %}
   </div>
 
-  {% if collections.posts | length == 0 %}
-    <p>No adventures yet. Check back soon!</p>
-  {% endif %}
+  <p id="aa-empty" class="aa-empty" hidden>No adventures match your filter.</p>
 </section>
 
 <script>
-  (function () {
-    const cards = Array.from(document.querySelectorAll('#cards .aa-card'));
-    const chips = Array.from(document.querySelectorAll('.aa-chips .chip'));
-    const q = document.getElementById('aa-q');
+(function(){
+  const chips  = document.querySelectorAll('.aa-filter__scroller .chip');
+  const q      = document.querySelector('#aa-q');
+  const wraps  = document.querySelectorAll('.aa-cardwrap');
+  const empty  = document.querySelector('#aa-empty');
 
-    function applyFilters() {
-      const active = chips.find(c => c.getAttribute('aria-pressed') === 'true');
-      const tag = active ? active.dataset.filter : 'all';
-      const query = (q.value || '').trim().toLowerCase();
+  let active = 'all';
+  let term = '';
 
-      cards.forEach(card => {
-        const tags = card.dataset.postTags || '';
-        const title = card.dataset.postTitle || '';
-        const excerpt = card.dataset.postExcerpt || '';
-        const tagMatch = (tag === 'all') || tags.split(',').includes(tag);
-        const textMatch = !query || title.includes(query) || excerpt.includes(query);
-        card.style.display = (tagMatch && textMatch) ? '' : 'none';
-      });
-    }
+  function apply(){
+    let shown = 0;
+    wraps.forEach(w => {
+      const tags    = (w.dataset.tags||'');
+      const title   = (w.dataset.title||'');
+      const excerpt = (w.dataset.excerpt||'');
 
-    chips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        chips.forEach(c => c.setAttribute('aria-pressed', 'false'));
-        chip.setAttribute('aria-pressed', 'true');
-        applyFilters();
-      });
+      const tagOk  = active === 'all' || tags.split(',').includes(active);
+      const textOk = !term || title.includes(term) || excerpt.includes(term) || tags.includes(term);
+
+      const vis = tagOk && textOk;
+      w.style.display = vis ? '' : 'none';
+      if (vis) shown++;
     });
+    empty.hidden = shown !== 0;
+  }
 
-    q.addEventListener('input', applyFilters);
+  chips.forEach(c => {
+    c.addEventListener('click', () => {
+      chips.forEach(b => b.setAttribute('aria-pressed','false'));
+      c.setAttribute('aria-pressed','true');
+      active = (c.dataset.filter || 'all').toLowerCase();
+      apply();
+    });
+  });
 
-    // show everything by default
-    applyFilters();
-  })();
+  q?.addEventListener('input', e => {
+    term = (e.target.value || '').toLowerCase().trim();
+    apply();
+  });
+
+  // Show everything on first load
+  apply();
+})();
 </script>
