@@ -343,3 +343,103 @@ hr.dash{margin:1.5rem 0;border:none;border-top:3px dashed var(--yellow)}
 
 /* TEMP — remove after confirming */
 .aa-post__title::after { content:" ← v16"; color:#F57C00; font-weight:900; }
+
+/* ===== Listing Grid ===== */
+.aa-grid{
+  display:grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+/* ===== Card (Base44-ish) ===== */
+.aa-card{
+  display:block;
+  background:#fff;
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  overflow:hidden;
+  transition: transform .12s ease, box-shadow .12s ease;
+  text-decoration:none;
+  color: inherit;
+}
+.aa-card:hover{
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* full-bleed media with soft radius */
+.aa-card__media{
+  position:relative;
+  overflow:hidden;
+}
+.aa-card__media img{
+  width:100%;
+  height: 220px;            /* adjust for taller/shorter image */
+  object-fit: cover;
+  display:block;
+}
+
+/* body */
+.aa-card__body{
+  padding: .95rem 1rem 1.1rem;
+}
+
+/* row with pill + read time */
+.aa-card__toprow{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:.75rem;
+  margin-bottom:.35rem;
+}
+
+/* title & excerpt */
+.aa-card__title{
+  font-family: Fredoka, system-ui, sans-serif;
+  color: var(--green);
+  font-weight: 900;
+  font-size: clamp(18px, 2.2vw, 24px);
+  margin: .2rem 0 .25rem;
+}
+.aa-card__excerpt{
+  margin:0 0 .6rem;
+  opacity:.85;
+}
+
+/* meta line */
+.aa-card__meta{
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+}
+
+/* pill (category) */
+.aa-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  padding:.42rem .75rem;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size:.85rem;
+  background:#E9F5EC;           /* soft green default */
+  color:#165e23;
+  box-shadow: var(--shadow-sm);
+  border:2px solid #cfe7d4;
+  text-transform: lowercase;
+}
+
+/* optional: colorize pill by tag name */
+.aa-pill:is(.days, .day, .days-out){ background:#FFF6D6; color:#6b560e; border-color:#fbe9a2; }
+.aa-pill.holidays{ background:#E6F5FC; color:#0a67a8; border-color:#cdeafa; }
+
+/* tiny meta text (read time, date) */
+.aa-meta{
+  font-size:.9rem;
+  opacity:.7;
+}
+
+/* Make the first image on very wide cards a bit taller */
+@media (min-width: 1100px){
+  .aa-card__media img{ height: 260px; }
+}
