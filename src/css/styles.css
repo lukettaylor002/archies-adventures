@@ -423,6 +423,46 @@ hr.dash{margin:1.5rem 0;border:none;border-top:3px dashed var(--yellow)}
   .aa-card__media img{ height: 260px; }
 }
 
+/* Equal-height cards */
+.aa-grid{
+  align-items: stretch;          /* make grid cells equal height */
+}
+
+.aa-card{
+  display: flex;                 /* card fills the cell */
+  flex-direction: column;
+  height: 100%;
+}
+
+.aa-card__media{
+  flex-shrink: 0;                /* image keeps its height */
+}
+
+.aa-card__body{
+  flex: 1;                       /* body stretches to fill */
+  display: flex;
+  flex-direction: column;
+}
+
+/* optional footer pinned to bottom */
+.aa-card__footer{
+  margin-top: auto;              /* pushes footer to bottom */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .6rem;
+}
+
+.aa-card__more{
+  font-weight: 700;
+  font-size: .95rem;
+  color: var(--blue);
+  text-decoration: none;
+}
+.aa-card__more:hover{ opacity:.85; text-decoration: underline; }
+
+
+
 /* Filter bar */
 .aa-filter{
   display:flex; flex-wrap:wrap; gap:.8rem; align-items:center;
