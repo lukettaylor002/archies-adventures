@@ -367,7 +367,7 @@ html.nav-open, html.nav-open body{overflow:hidden}
 
 /* Content card like the mock */
 .aa-post__card{
-  background:#fff; border-radius: 22px; padding: clamp(16px, 3.5vw, 28px);
+  background:#fff; border-radius: 12px; padding: 2rem;
   box-shadow: var(--shadow-lg);
   color: var(--green);           /* green body text like the screenshot */
 }
