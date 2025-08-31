@@ -26,9 +26,12 @@ permalink: /adventures/
   <!-- Cards grid -->
   <div id="aa-grid" class="aa-grid">
     {% for p in collections.posts | reverse %}
-      {% set cover = p.data.cover or '/images/sample.jpg' %}
+      {% set cover    = p.data.cover or '/images/sample.jpg' %}
       {% set tagsList = p.data.tags or [] %}
-      {% set firstTag = tagsList and tagsList.length ? tagsList[0] : '' %}
+      {% set firstTag = '' %}
+      {% if tagsList | length %}
+        {% set firstTag = tagsList[0] %}
+      {% endif %}
 
       <div class="aa-cardwrap"
            data-tags="{{ tagsList | join(',') | lower }}"
