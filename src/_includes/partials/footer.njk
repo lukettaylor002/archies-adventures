@@ -8,8 +8,11 @@
     </div>
 
     <!-- Subscribe -->
-<form name="newsletter" method="POST" data-netlify="true" class="subscribe">
+<form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="subscribe">
   <input type="hidden" name="form-name" value="newsletter">
+  <p class="hidden">
+    <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
+  </p>
 
   <!-- Email + button row -->
   <div class="subscribe__row">
