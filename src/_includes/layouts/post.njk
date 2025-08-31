@@ -11,12 +11,6 @@ layout: layouts/base.njk
       <img class="aa-post__cover" src="{{ cover }}" alt="">
     {% endif %}
 
-    <h1 class="aa-post__title">{{ title }}</h1>
-
-    {% if excerpt %}
-      <p class="aa-post__subtitle">{{ excerpt }}</p>
-    {% endif %}
-
     <div class="aa-post__meta">
       {% if tags and tags.length %}
         <span class="chip chip--green">{{ tags[0] }}</span>
@@ -24,6 +18,13 @@ layout: layouts/base.njk
       <span class="aa-post__meta-chip">{{ page.date | date("MMM dd, yyyy") }}</span>
       <span class="aa-post__meta-chip">{{ content | readTime }}</span>
     </div>
+
+    <h1 class="aa-post__title">{{ title }}</h1>
+
+    {% if excerpt %}
+      <p class="aa-post__subtitle">{{ excerpt }}</p>
+    {% endif %}
+
 
     <div class="aa-post__card content">
       {{ content | safe }}
