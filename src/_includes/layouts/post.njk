@@ -34,11 +34,17 @@ layout: layouts/base.njk
   <div id="subscribe" class="aa-sub__card" style="margin-top:1rem; text-align:center">
     <h2>Join the Adventure Club 📬</h2>
     <p>Don’t miss the next trip! Get new posts in your inbox.</p>
-    <!-- Replace the action with your provider (Buttondown example below) -->
-    <form class="subscribe" action="https://buttondown.email/api/emails/embed-subscribe/ARCHIE" method="post" target="_blank">
-      <input aria-label="Your email" type="email" name="email" placeholder="Your email" required>
-      <button class="btn-2tone" type="submit">Subscribe</button>
-    </form>
+         <!-- Netlify Forms -->
+      <form name="newsletter" method="POST" data-netlify="true"
+            netlify-honeypot="bot-field" action="/thanks" class="aa-sub__form">
+        <input type="hidden" name="form-name" value="newsletter">
+        <p class="sr-only"><label>Don’t fill this out: <input name="bot-field"></label></p>
+
+        <div class="aa-sub__row">
+          <input aria-label="Your email" type="email" name="email" placeholder="Your email" required>
+          <button class="aa-sub__btn" type="submit">Subscribe</button>
+        </div>
+      </form>
   </div>
 
     <div class="aa-post__footer">
