@@ -7,11 +7,30 @@
       <p class="footer__tagline">Join Archie on amazing adventures around the world! 🌍</p>
     </div>
 
-    <!-- Subscribe (Buttondown example). Swap the action with your provider -->
-    <form class="subscribe" action="https://buttondown.email/api/emails/embed-subscribe/ARCHIE" method="post" target="_blank">
-      <input aria-label="Your email" type="email" name="email" placeholder="Your email" required>
-      <button class="btn-2tone" type="submit">Subscribe</button>
-    </form>
+    <!-- Subscribe -->
+<form name="newsletter"
+      method="POST"
+      action="/thanks/"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      class="subscribe">
+
+  <!-- Netlify needs these -->
+  <input type="hidden" name="form-name" value="newsletter">
+  <p style="display:none">
+    <label>Don’t fill this out if you’re human:
+      <input name="bot-field">
+    </label>
+  </p>
+
+  <input aria-label="Your email" type="email" name="email" placeholder="Your email" required>
+  <label class="gdpr" style="display:block;margin:.4rem 0 .6rem;font-size:.9rem;opacity:.85">
+    <input type="checkbox" name="consent" required>
+    I agree to receive updates from Archie’s Adventures.
+  </label>
+
+  <button class="btn-2tone" type="submit">Subscribe</button>
+</form>
 
     <ul class="footer__chips" aria-label="Site highlights" style="list-style:none;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:8px 0 0;padding:0">
       <li class="footer__chip">🍕 Made with love</li>
