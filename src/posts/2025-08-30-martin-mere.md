@@ -31,6 +31,7 @@ Weird & Wonderful is where there’s lots of these birds, and they’re all like
 
 There we saw loads of strange duck-looking things and birds that looked like oversized pigeons.  
 We saw something called a **Spoonbill** – which is a big bird with a long beak that looks like a spoon with a yellow end.
+![Spoonbill](/images/martin-mere-3.png) ![Spoonbill](/images/martin-mere-4.png)
 
 ---
 
@@ -40,7 +41,7 @@ The **Dragonfly Festival** is a big trail all around the park.
 It has lots of different coloured dragonflies and they’ve each got a number (up to ten). You have to find them all and write the number on a little booklet that you get at the start. The booklet shows all of the dragonflies around the park.  
 
 We didn’t find them all though, because we were rushing to the otters and then to the adventure playground. So I don’t know what you get if you complete it!
-
+![Dragonfly](/images/martin-mere-2.png)
 ---
 
 ## 🦦 Otters & 🦩 Flamingos
@@ -50,7 +51,7 @@ We got there in time to watch them feed two otters some little sardines. They we
 Afterwards the otters went back to bed — I think they were tired.  
 
 On the way to the adventure playground we passed the flamingos. I think there were about **100 flamingos**!  
-
+![Otters](/images/martin-mere-1.jpg)
 ---
 
 ## 🛝 Adventure Playground
