@@ -1,39 +1,37 @@
-<footer class="footer" role="contentinfo" aria-label="Site footer">
-  <div class="container footer__inner">
+<footer class="aa-footer" role="contentinfo" aria-label="Site footer">
+  <!-- soft curved top -->
+  <div class="aa-footer__wave" aria-hidden="true"></div>
 
-    <div class="footer__brand">
-      <img class="footer__badge" src="/images/logo-badge.svg" alt="Archie’s Adventures" width="44" height="44">
-      <h3 class="footer__title" style="font-family:Fredoka;color:var(--green);margin:.3rem 0 0;">Archie’s Adventures</h3>
-      <p class="footer__tagline">Join Archie on amazing adventures around the world! 🌍</p>
+  <div class="container aa-footer__inner">
+    <!-- Brand (logo only) -->
+    <div class="aa-footer__brand">
+      <img src="/images/logo-badge.svg" alt="" width="120" height="120" />
     </div>
 
-    <!-- Subscribe -->
-<form name="newsletter" method="POST" data-netlify="true" action="/thanks" netlify-honeypot="bot-field" class="subscribe">
-  <input type="hidden" name="form-name" value="newsletter">
-  <p class="hidden" style="display:none;">
-    <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
-  </p>
+    <!-- About -->
+    <div class="aa-footer__about">
+      <h3>About the blog</h3>
+      <p>
+        Archie shares kid-friendly adventures, days out, and curious discoveries.
+        Every story is a chance to learn something new—come explore with us! 🌍
+      </p>
+    </div>
 
-  <!-- Email + button row -->
-  <div class="subscribe__row">
-    <input aria-label="Your email" type="email" name="email" placeholder="Your email" required>
-    <button class="btn-2tone" type="submit">Subscribe</button>
+    <!-- Nav -->
+    <nav class="aa-footer__nav" aria-label="Footer">
+      <h3>Explore</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/adventures/">All Adventures</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/posts/">Archive</a></li>
+      </ul>
+    </nav>
   </div>
 
-  <!-- Agree checkbox -->
-  <label class="subscribe__agree">
-    <input type="checkbox" name="agree" required>
-    I agree to receive adventure updates ✨
-  </label>
-</form>
-
-
-    <ul class="footer__chips" aria-label="Site highlights" style="list-style:none;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:8px 0 0;padding:0">
-      <li class="footer__chip">🍕 Made with love</li>
-      <li class="footer__chip">🧭 Exploring since 2024</li>
-      <li class="footer__chip">⭐ Adventure awaits</li>
-    </ul>
-
-    <p class="footer__legal">© {{ site.year }} Archie’s Adventures</p>
+  <div class="aa-footer__legal">
+    <div class="container">
+      <p>© {{ site.year }} Archie’s Adventures • Made with 🍕 & curiosity</p>
+    </div>
   </div>
 </footer>
