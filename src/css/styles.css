@@ -145,6 +145,30 @@ hr.dash{margin:2rem 0;border:none;border-top:3px dashed var(--yellow)}
 }
 .btn-ghost:hover{ transform: translateY(-2px); }
 
+/* Patterned colour hero (soft icons like footer) */
+.aa-hero--pattern{
+  position:relative; border:0; overflow:hidden;
+  background: linear-gradient(180deg,#e9f5ff 0%, #ffffff 55%, #fff3df 100%);
+}
+.aa-hero--pattern::before{
+  content:""; position:absolute; inset:0; opacity:.35; pointer-events:none;
+  background:
+    url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='220' height='140' viewBox='0 0 220 140'>\
+<defs><style>.i{fill:none;stroke:%239ac7ff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.7}</style></defs>\
+<path class='i' d='M30 95 l30-45 30 45 M45 72 l30 45 M20 95 h80'/>\
+<circle class='i' cx='165' cy='38' r='18'/>\
+<path class='i' d='M165 22 v4 M165 50 v4 M149 38 h4 M177 38 h4 M165 28 l6 10 -10 6z'/>\
+<path class='i' d='M40 28 l12-12 12 12 -8 0 8 8 -8 0 8 8 H44 l8-8 -8 0 8-8z'/>\
+<path class='i' d='M52 44 v10'/>\
+<ellipse class='i' cx='140' cy='96' rx='6' ry='10' transform='rotate(-20 140 96)'/>\
+<ellipse class='i' cx='155' cy='108' rx='5' ry='8' transform='rotate(-20 155 108)'/>\
+</svg>") repeat;
+  background-size: 440px auto;
+}
+.aa-hero--pattern .aa-hero__inner{ position:relative; padding:44px 16px; }
+
+
 /* ===== Clean Full-Width Header ===== */
 .header {
   position: sticky;
