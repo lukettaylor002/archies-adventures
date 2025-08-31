@@ -1,6 +1,6 @@
 ---
 title: "My Trip to Martin Mere Wetland Centre 🦦"
-date: 26-08-2025
+date: 2025-08-26
 layout: layouts/post.njk
 excerpt: Pond dipping, otters, flamingos and a huge slide!
 cover: /images/martin-mere.jpg
