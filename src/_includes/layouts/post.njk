@@ -1,5 +1,10 @@
 {% extends "layouts/base.njk" %}
-{% set firstTag = (tags and tags.length) ? tags[0] : null %}
+
+{# firstTag: Nunjucks-safe way (no ternary) #}
+{% set firstTag = null %}
+{% if tags and tags.length %}
+  {% set firstTag = tags[0] %}
+{% endif %}
 
 {% block content %}
 <article class="aa-post">
@@ -19,7 +24,7 @@
 
     <div class="aa-post__meta">
       {% if firstTag %}
-        <span class="chip chip--green">{{ firstTag }}</span>
+        <span class="aa-pill">{{ firstTag }}</span>
       {% endif %}
 
       <span class="aa-post__meta-chip">
@@ -33,7 +38,7 @@
       </span>
     </div>
 
-    <!-- Content card -->
+    <!-- Main content -->
     <div class="aa-post__card content">
       {{ content | safe }}
     </div>
@@ -41,34 +46,40 @@
     <!-- Share row -->
     <div class="aa-post__share">
       <span class="aa-post__share-label">Share this adventure:</span>
-      {% set shareUrl = site.url ~ page.url %}
-      {% set shareText = (title or "Archie’s Adventures") %}
+      {% set shareUrl = page.url %}
+      {% set shareText = title or "Archie’s Adventures" %}
       <a class="aa-share" href="https://twitter.com/intent/tweet?url={{ shareUrl | urlencode }}&text={{ shareText | urlencode }}" target="_blank" rel="noopener">X</a>
       <a class="aa-share" href="https://www.facebook.com/sharer/sharer.php?u={{ shareUrl | urlencode }}" target="_blank" rel="noopener">Facebook</a>
       <button class="aa-share aa-share--copy" data-copy="{{ shareUrl }}">Copy link</button>
     </div>
 
-    <!-- Related posts (same first tag) -->
+    <!-- Related adventures: same first tag, max 3 -->
     {% if firstTag %}
-      {% set related = collections.posts
-          | reverse
-          | filter(post => post.url != page.url and (post.data.tags or []).includes(firstTag))
-          | slice(0, 3) %}
+      {% set shown = 0 %}
+      {% set opened = false %}
+      {% for p in collections.posts | reverse %}
+        {% if p.url != page.url
+              and p.data.tags
+              and (firstTag in p.data.tags)
+              and shown < 3 %}
+          {% if opened == false %}
+            {% set opened = true %}
+            <section class="aa-related">
+              <h2>More in {{ firstTag }}</h2>
+              <div class="aa-grid">
+          {% endif %}
 
-      {% if related | length %}
-        <section class="aa-related">
-          <h2>More in {{ firstTag }}</h2>
-          <div class="aa-grid">
-            {% for p in related %}
-              {# Reuse the card partial if you like; otherwise inline a small card #}
-              {% include "partials/card.njk" post=p %}
-            {% endfor %}
-          </div>
-        </section>
+          {% include "partials/card.njk" post=p %}
+          {% set shown = shown + 1 %}
+        {% endif %}
+      {% endfor %}
+      {% if opened %}
+              </div>
+            </section>
       {% endif %}
     {% endif %}
 
-    <!-- Bottom thanks/CTA -->
+    <!-- Bottom CTA -->
     <div class="aa-post__footer">
       <img src="/images/logo-badge.svg" alt="" class="aa-post__mini" width="28" height="28">
       <p>Thanks for joining my adventure! ✨</p>
@@ -78,33 +89,18 @@
   </div>
 </article>
 
-<!-- Small helper to copy link -->
 <script>
   (function(){
     const btn = document.querySelector('.aa-share--copy');
     if(!btn) return;
     btn.addEventListener('click', async () => {
       try {
-        await navigator.clipboard.writeText(btn.dataset.copy);
+        const url = new URL(btn.dataset.copy, window.location.origin).toString();
+        await navigator.clipboard.writeText(url);
         btn.textContent = 'Copied!';
         setTimeout(()=>btn.textContent='Copy link', 1500);
       } catch(e) { btn.textContent = 'Failed'; }
     });
   })();
-</script>
-
-{# Basic JSON-LD for Article (optional but good for SEO) #}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": {{ title | dump }},
-  "description": {{ (excerpt or '') | dump }},
-  "datePublished": "{{ page.date.toISOString() }}",
-  {% if cover %}"image": ["{{ site.url }}{{ cover }}"],{% endif %}
-  "url": "{{ site.url }}{{ page.url }}",
-  "mainEntityOfPage": {"@type": "WebPage","@id": "{{ site.url }}{{ page.url }}"},
-  "publisher": {"@type":"Organization","name":"Archie's Adventures","logo":{"@type":"ImageObject","url":"{{ site.url }}/images/logo-badge.svg"}}
-}
 </script>
 {% endblock %}
