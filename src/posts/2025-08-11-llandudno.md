@@ -4,7 +4,7 @@ date: 2025-08-11
 layout: layouts/post.njk
 excerpt: A fun trip to Llandudno in Wales — pier, Lego, gemstones, beach and cable cars!
 cover: /images/llandudno.jpg
-tags: ["holidays"]
+tags: ["days out"]
 ---
 
 When we went, we had to go all the way from our holiday home to **Conwy**.  
