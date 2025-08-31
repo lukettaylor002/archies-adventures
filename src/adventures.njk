@@ -30,8 +30,11 @@ permalink: /adventures/
            data-tags="{{ (p.data.tags or []) | join(',') | lower }}"
            data-title="{{ (p.data.title or '') | lower }}"
            data-excerpt="{{ (p.data.excerpt or '') | lower }}">
-        {# EXPLICIT: pass post into the partial #}
-        {% include "partials/card.njk" with { post: p } %}
+
+        {# Nunjucks way: set a variable, then include #}
+        {% set post = p %}
+        {% include "partials/card.njk" %}
+
       </div>
     {% endfor %}
   </div>
@@ -42,25 +45,24 @@ permalink: /adventures/
 
 <script>
   (function () {
-    const grid  = document.getElementById('aa-grid');
-    const wraps = Array.from(grid.querySelectorAll('.aa-cardwrap'));
+    const wraps = Array.from(document.querySelectorAll('#aa-grid .aa-cardwrap'));
     const chips = Array.from(document.querySelectorAll('.aa-filter .chip'));
-    const q     = document.getElementById('aa-q');
+    const q = document.getElementById('aa-q');
     const empty = document.getElementById('aa-empty');
 
     function activeTag() {
-      const activeChip = chips.find(c => c.getAttribute('aria-pressed') === 'true');
-      return activeChip ? activeChip.dataset.filter : 'all';
+      const active = chips.find(c => c.getAttribute('aria-pressed') === 'true');
+      return active ? active.dataset.filter : 'all';
     }
 
     function applyFilters() {
       const tag = activeTag();
       const query = (q.value || '').trim().toLowerCase();
-
       let visible = 0;
+
       wraps.forEach(w => {
-        const tags    = (w.dataset.tags || '');
-        const title   = (w.dataset.title || '');
+        const tags = (w.dataset.tags || '');
+        const title = (w.dataset.title || '');
         const excerpt = (w.dataset.excerpt || '');
 
         const tagMatch  = (tag === 'all') || tags.split(',').includes(tag);
@@ -83,8 +85,6 @@ permalink: /adventures/
     });
 
     q.addEventListener('input', applyFilters);
-
-    // Show everything on load
-    applyFilters();
+    applyFilters(); // show everything on load
   })();
 </script>
