@@ -15,8 +15,8 @@ layout: layouts/base.njk
       {% if tags and tags.length %}
         <span class="chip chip--green">{{ tags[0] }}</span>
       {% endif %}
-      <span class="aa-post__meta-chip">{{ page.date | date("MMM dd, yyyy") }}</span>
-      <span class="aa-post__meta-chip">{{ content | readTime }}</span>
+      <span class="aa-post__meta-chip">📅 {{ page.date | date("MMM dd, yyyy") }}</span>
+      <span class="aa-post__meta-chip">⏱️ {{ content | readTime }}</span>
     </div>
 
     <h1 class="aa-post__title">{{ title }}</h1>
