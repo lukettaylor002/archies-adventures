@@ -30,6 +30,70 @@ layout: layouts/base.njk
       {{ content | safe }}
     </div>
 
+{# --- Share block (clean + accessible) --- #}
+{% set shareUrl  = ((site.url or '') + page.url) %}
+{% set shareUtm  = shareUrl + '?utm_source=site&utm_medium=share&utm_campaign=post-share' %}
+{% set shareText = (title or page.fileSlug) + ' — Archies Adventures' %}
+
+<div class="aa-share" role="region" aria-label="Share this adventure">
+  <h3 class="aa-share__title">Share this adventure</h3>
+  <div class="aa-share__row">
+
+    <a class="aa-share__btn" href="https://twitter.com/intent/tweet?url={{ shareUtm | urlencode }}&text={{ shareText | urlencode }}"
+       target="_blank" rel="noopener noreferrer" aria-label="Share on X (Twitter)">X</a>
+
+    <a class="aa-share__btn" href="https://www.facebook.com/sharer/sharer.php?u={{ shareUtm | urlencode }}"
+       target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">Facebook</a>
+
+    <a class="aa-share__btn" href="https://www.linkedin.com/sharing/share-offsite/?url={{ shareUtm | urlencode }}"
+       target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">LinkedIn</a>
+
+    <a class="aa-share__btn" href="mailto:?subject={{ shareText | urlencode }}&body={{ shareUtm | urlencode }}"
+       aria-label="Share by Email">Email</a>
+
+    <button class="aa-share__btn aa-share__btn--copy" type="button" data-copy="{{ shareUtm }}"
+            aria-label="Copy link">Copy link</button>
+
+    <button class="aa-share__btn aa-share__btn--native" type="button"
+            data-share-url="{{ shareUtm }}" data-share-title="{{ title }}"
+            aria-label="Share with your apps">Share…</button>
+  </div>
+
+  <p class="aa-share__note">Thanks for sharing! It really helps the blog grow.</p>
+</div>
+
+<script>
+  // Copy link
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.aa-share__btn--copy');
+    if (!btn) return;
+    const url = btn.getAttribute('data-copy');
+    navigator.clipboard?.writeText(url).then(() => {
+      const old = btn.textContent;
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = old, 1400);
+    });
+  });
+
+  // Web Share API (mobile)
+  document.addEventListener('click', async (e) => {
+    const btn = e.target.closest('.aa-share__btn--native');
+    if (!btn) return;
+    const data = {
+      title: btn.getAttribute('data-share-title') || document.title,
+      url: btn.getAttribute('data-share-url') || location.href
+    };
+    if (navigator.share) {
+      try { await navigator.share(data); } catch(_) {}
+    } else {
+      // Fallback: copy
+      navigator.clipboard?.writeText(data.url);
+      btn.textContent = 'Link copied';
+      setTimeout(() => btn.textContent = 'Share…', 1400);
+    }
+  });
+</script>
+
 <!-- Subscribe -->
   <div id="subscribe" class="aa-sub__card" style="margin-top:1rem; text-align:center">
     <h2>Join the Adventure Club 📬</h2>
