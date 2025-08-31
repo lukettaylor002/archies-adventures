@@ -44,6 +44,7 @@ It has lots of different coloured dragonflies and they’ve each got a number (u
 We didn’t find them all though, because we were rushing to the otters and then to the adventure playground. So I don’t know what you get if you complete it!
 
 (/images/martin-mere-2.png)
+
 ---
 
 ## 🦦 Otters & 🦩 Flamingos
@@ -54,7 +55,8 @@ Afterwards the otters went back to bed — I think they were tired.
 
 On the way to the adventure playground we passed the flamingos. I think there were about **100 flamingos**! 
 
-(/images/Martin Mere 1.jpeg)
+(/images/martin-mere-1.jpg)
+
 ---
 
 ## 🛝 Adventure Playground
