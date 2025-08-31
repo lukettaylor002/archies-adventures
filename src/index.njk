@@ -3,31 +3,44 @@ layout: layouts/base.njk
 title: Home
 ---
 
-<section class="hero">
-  <div class="hero__badge">
-    <img src="/images/logo-badge.svg" alt="Archie’s Adventures">
-  </div>
-  <div>
-    <h1>Welcome to Archie’s Adventures! 🌍</h1>
-    <p>Exploring the world, one story at a time.</p>
-    <div class="hero__buttons">
-      <a class="chip chip--green" href="/tags/nature/"><span>🏞</span><span>Nature</span></a>
-      <a class="chip chip--yellow" href="/tags/days-out/"><span>🎡</span><span>Days Out</span></a>
-      <a class="chip chip--blue" href="/tags/holidays/"><span>✈️</span><span>Holidays</span></a>
-      <a class="chip" href="/tags/fun/"><span>🎨</span><span>Fun Stuff</span></a>
+<!-- Hero Banner -->
+<section class="aa-hero">
+  <div class="aa-hero__bg"></div>
+  <div class="aa-hero__inner">
+
+    <div class="aa-hero__badge">
+      <img src="/images/logo-badge.svg" alt="Archie’s Adventures" width="64" height="64">
     </div>
+
+    <h1 class="aa-hero__title">
+      Welcome to <span class="aa-accent">Archie’s Adventures!</span> 🌍
+    </h1>
+
+    <p class="aa-hero__lead">
+      Join me as I explore amazing places, discover cool things, and share incredible stories!  
+      Every adventure is a chance to learn something new.  
+      Ready to explore with me?<span class="aa-pop">Let’s go! 🚀</span>
+    </p>
+
+    <div class="aa-hero__actions">
+      <a href="/adventures/" class="btn-2tone aa-btn-lg">
+        <span class="aa-ico">+</span> Start New Adventure
+      </a>
+      <a href="/adventures/" class="aa-btn-outline aa-btn-lg">
+        <span class="aa-ico">🔍</span> Explore Adventures
+      </a>
+    </div>
+
   </div>
 </section>
 
+<!-- Latest Adventures -->
 <section>
   <h2>Latest Adventures</h2>
   <div class="grid">
     {% for post in collections.posts | reverse | slice(0,6) %}
-      <article class="card">
-        <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
-        <p>{{ post.data.excerpt }}</p>
-        <p><small>{{ post.date | date("MMM d, yyyy") }}</small></p>
-      </article>
+      {% set p = post %}
+      {% include "partials/card.njk" %}
     {% endfor %}
   </div>
 </section>
