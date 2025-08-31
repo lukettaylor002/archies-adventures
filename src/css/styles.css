@@ -193,6 +193,51 @@ hr.dash{margin:2rem 0;border:none;border-top:3px dashed var(--yellow)}
 .header__cta {
   margin-left: .5rem;
 }
+
+/* Utility: screen-reader only */
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* --- Header base keeps your current desktop look --- */
+.header { position: sticky; top: 0; z-index: 50; width: 100%; background:#fff;
+  border-bottom:2px solid rgba(0,0,0,.05); box-shadow:0 2px 8px rgba(0,0,0,.04); }
+.header__inner { max-width:1200px; margin:0 auto; padding:.9rem 1.25rem;
+  display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+.header__left{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:inherit}
+.header__right{display:flex;align-items:center;gap:1rem}
+.header__right a{font-weight:700;color:var(--text)}
+.header__right a:hover{color:var(--blue)}
+.header__cta{margin-left:.25rem}
+
+/* Burger button (hidden on desktop) */
+.nav-toggle{display:none; position:relative; width:44px;height:40px;border:0;background:transparent;cursor:pointer}
+.nav-toggle__bar{display:block;width:24px;height:3px;background:var(--text);border-radius:2px;margin:4px auto;transition:transform .2s,opacity .2s}
+
+/* X animation */
+.nav-toggle.open .nav-toggle__bar:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open .nav-toggle__bar:nth-child(2){opacity:0}
+.nav-toggle.open .nav-toggle__bar:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* --- Mobile layout --- */
+@media (max-width: 820px){
+  .nav-toggle{display:block}
+  /* Turn nav into slide-down panel under header */
+  .header__right{
+    position:absolute; left:0; right:0; top:100%;
+    background:#fff; border-bottom:2px solid rgba(0,0,0,.06);
+    display:block; /* stacked */
+    padding: .6rem 1rem;
+    box-shadow:0 10px 28px rgba(0,0,0,.08);
+    max-height:0; overflow:hidden; transition:max-height .25s ease;
+  }
+  .header__right.open{ max-height: 380px; }
+  .header__right a{ display:block; padding:.55rem .25rem }
+  .header__cta{ display:block; margin:.35rem 0 0; text-align:center }
+}
+
+/* Optional: lock body scroll when menu open */
+html.nav-open, html.nav-open body{overflow:hidden}
+
+
 /* ====== Hero banner (Base44 style) ====== */
 .hero-banner{
   margin: 8px auto 18px; padding: 24px 22px;
