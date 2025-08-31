@@ -1,6 +1,6 @@
-{% extends "layouts/base.njk" %}
-{% block content %}
-<!-- POST-LAYOUT v17 -->
+---
+layout: layouts/base.njk
+---
 
 <article class="aa-post">
   <div class="container">
@@ -25,7 +25,6 @@
       <span class="aa-post__meta-chip">{{ content | readTime }}</span>
     </div>
 
-    <!-- This white rounded card is what makes the look -->
     <div class="aa-post__card content">
       {{ content | safe }}
     </div>
@@ -38,5 +37,3 @@
 
   </div>
 </article>
-
-{% endblock %}
