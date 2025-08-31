@@ -31,7 +31,7 @@ Weird & Wonderful is where there’s lots of these birds, and they’re all like
 
 There we saw loads of strange duck-looking things and birds that looked like oversized pigeons.  
 We saw something called a **Spoonbill** – which is a big bird with a long beak that looks like a spoon with a yellow end.
-![Spoonbill](/images/martin-mere-3.png) ![Spoonbill](/images/martin-mere-4.png)
+![Spoonbill](/images/Martin-Mere-3) ![Spoonbill](/images/martin-mere-4.png)
 
 ---
 
