@@ -411,7 +411,6 @@ html.nav-open, html.nav-open body{overflow:hidden}
 .aa-post__footer{
   margin: 1.1rem 0 0;
   padding-top: .9rem;
-  border-top: 2px solid rgba(0,0,0,.06);
   display:grid; justify-items:center; gap:.6rem; text-align:center;
 }
 .aa-post__mini{ width:28px; height:28px; border-radius:50% }
