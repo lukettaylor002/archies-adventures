@@ -361,7 +361,7 @@ html.nav-open, html.nav-open body{overflow:hidden}
 
 /* Sub card */
 .aa-sub__card{
- padding: 2rem; margin-top: 3rem;
+  padding: 2rem;
   color: var(--green);
   background-color: #fff; 
   box-shadow: var(--shadow-md);
@@ -819,7 +819,7 @@ hr.dash{margin:1.5rem 0;border:none;border-top:3px dashed var(--yellow)}
 /* subscribe */
 .aa-sub__form{ margin-top:.2rem }
 .aa-sub__row{
-  display:flex; gap:.6rem; align-items:center; flex-wrap:nowrap;
+  display:flex; gap:.6rem; align-items:center; flex-wrap:nowrap;  max-width: 600px; margin: auto;
 }
 .aa-sub__row input[type="email"]{
   flex:1 1 auto; min-width:240px;
