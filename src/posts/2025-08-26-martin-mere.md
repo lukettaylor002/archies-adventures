@@ -9,8 +9,6 @@ tags: ["days out"]
 
 On the last week of the holidays we went to **Martin Mere Wetland Centre** in Lancashire with my Nana and Grandad and my little sister Lois.
 
----
-
 ## 🐟 Pond Dipping
 When we got there we first went pond dipping. Pond dipping is where you have a net and you scoop up different things from inside the pond like insects, snails, fish and hopping things.  
 
@@ -22,8 +20,6 @@ Before we started, a lady told us how to do it:
 
 Then we had lunch. We took a picnic with a nice ham sandwich, fruit and cakes. 🍰
 
----
-
 ## 🦤 Weird & Wonderful
 Weird & Wonderful is where there’s lots of these birds, and they’re all like… they look really weird but they’re also really wonderful too.  
 
@@ -31,8 +27,6 @@ There we saw loads of strange duck-looking things and birds that looked like ove
 We saw something called a **Spoonbill** – which is a big bird with a long beak that looks like a spoon with a yellow end.
 
 ![Spoonbill](/images/martin-mere-3.png) ![Spoonbill](/images/martin-mere-4.png)
-
----
 
 ## 🐲 Dragonfly Festival
 The **Dragonfly Festival** is a big trail all around the park.  
@@ -42,8 +36,6 @@ It has lots of different coloured dragonflies and they’ve each got a number (u
 We didn’t find them all though, because we were rushing to the otters and then to the adventure playground. So I don’t know what you get if you complete it!
 
 ![Dragonfly](/images/martin-mere-2.png)
-
----
 
 ## 🦦 Otters & 🦩 Flamingos
 We were rushing because we wanted to go to the **feeding of the otters**.  
@@ -55,24 +47,20 @@ On the way to the adventure playground we passed the flamingos. I think there we
 
 ![Otters](/images/martin-mere-1.jpg)
 
----
-
 ## 🛝 Adventure Playground
 Make sure you bring some waterproofs, because there’s **Paddle and Play** if you want to go there.  
 
 The adventure playground itself is really fun. There’s a huge slide that you climb up to using a big red rope before sliding down.  
 
----
 
 ## ℹ️ Want to visit?
 If you are interested in going to Martin Mere or learning more, check out their website:  
 👉 [Martin Mere Wetland Centre](https://www.wwt.org.uk/wetland-centres/martin-mere)
 
----
+
 
 ## 🏅 Archie’s Rating
 **10/10** – We had the best day ever!
 
----
 
 👉 *“Don’t miss the next adventure! 🌍 Subscribe with your email and join me for more fun trips and discoveries.”*
