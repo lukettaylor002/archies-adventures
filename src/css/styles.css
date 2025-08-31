@@ -517,3 +517,35 @@ hr.dash{margin:1.5rem 0;border:none;border-top:3px dashed var(--yellow)}
   background:#fff; border:2px dashed #e5ecf3; border-radius:14px; text-align:center;
   color:#6b7280; font-weight:700;
 }
+
+.subscribe {
+  display: grid;
+  gap: .6rem; /* space between email row and checkbox */
+  justify-items: center;
+  text-align: center;
+}
+
+.subscribe__row {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: nowrap;
+}
+
+.subscribe__row input[type="email"] {
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  border: 2px solid var(--green);
+  min-width: 260px;
+  font-size: 1rem;
+  outline: none;
+  background: #fff;
+}
+
+.subscribe__row input[type="email"]:focus {
+  box-shadow: 0 0 0 4px #e3f3e6;
+}
+
+.subscribe__agree {
+  font-size: .9rem;
+  color: var(--text);
+}
