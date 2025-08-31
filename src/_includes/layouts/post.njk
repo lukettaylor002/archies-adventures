@@ -30,50 +30,20 @@ layout: layouts/base.njk
       {{ content | safe }}
     </div>
 
-<section class="signup-banner" aria-labelledby="signup-title">
-  <div class="container">
-    <div class="signup-banner__inner">
-      <h2 id="signup-title" class="signup-banner__title">
-        Receive the latest Adventure updates.
-      </h2>
-
-      <!-- Netlify form -->
-      <form name="newsletter-hero"
-            method="POST"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
-            action="/thanks"
-            class="signup-form"
-            aria-label="Subscribe to newsletter">
-
-        <input type="hidden" name="form-name" value="newsletter-hero">
-        <p class="hidden"><label>Don’t fill this out: <input name="bot-field"></label></p>
-
-        <div class="signup-form__row">
-          <label for="signup-email" class="sr-only">Your email</label>
-          <input id="signup-email"
-                 type="email"
-                 name="email"
-                 placeholder="Enter your email address"
-                 required
-                 inputmode="email"
-                 autocomplete="email">
-          <button type="submit" class="btn-2tone">Subscribe</button>
-        </div>
-
-        <label class="signup-form__agree">
-          <input type="checkbox" name="agree" required>
-          I agree to receive adventure updates ✨
-        </label>
-      </form>
-    </div>
+<!-- Subscribe -->
+  <div id="subscribe" class="aa-post__card" style="margin-top:1rem; text-align:center">
+    <h2>Join the Adventure Club 📬</h2>
+    <p>Don’t miss the next trip! Get new posts in your inbox.</p>
+    <!-- Replace the action with your provider (Buttondown example below) -->
+    <form class="subscribe" action="https://buttondown.email/api/emails/embed-subscribe/ARCHIE" method="post" target="_blank">
+      <input aria-label="Your email" type="email" name="email" placeholder="Your email" required>
+      <button class="btn-2tone" type="submit">Subscribe</button>
+    </form>
   </div>
-</section>
 
     <div class="aa-post__footer">
-      <img src="/images/logo-badge.svg" alt="" class="aa-post__mini" width="28" height="28">
       <p>Thanks for joining my adventure! ✨</p>
-      <a class="btn-2tone" href="/adventures/">Discover More Adventures</a>
+      <a class="btn-2tone" href="/adventures/">Discover More</a>
     </div>
 
   </div>
