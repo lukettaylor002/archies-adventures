@@ -7,8 +7,6 @@ cover: /images/llandudno.jpg
 tags: ["holidays"]
 ---
 
-# My Trip to Llandudno 🎢
-
 When we went, we had to go all the way from our holiday home to **Conwy**.  
 It was quite far because we stayed in Conwy and Llandudno, and we had to go all around the parking lot.  
 We couldn’t find many spaces — it was a bit far away.
