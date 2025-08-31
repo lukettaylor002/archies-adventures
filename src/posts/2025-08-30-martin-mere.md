@@ -1,9 +1,10 @@
 ---
 title: "My Trip to Martin Mere Wetland Centre 🦦"
 date: 2025-08-30
-tags: ["adventures", "nature", "family"]
 layout: layouts/post.njk
-author: "Archie"
+excerpt: Pond dipping, otters, flamingos and a huge slide!
+cover: /images/martin-mere.jpg
+tags: ["days out"]
 ---
 
 # My Trip to Martin Mere Wetland Centre 🦦
