@@ -361,9 +361,9 @@ html.nav-open, html.nav-open body{overflow:hidden}
   margin-bottom: 0.9rem;
 }
 .aa-post__meta-chip{
-  display:inline-block; padding:.35rem .7rem; border-radius:999px;
-  background:#f5f7fa; font-weight:800; font-size:.9rem;
-  box-shadow: var(--shadow-sm);
+  display:inline-block; padding:.35rem .7rem; 
+  font-weight:800; font-size:.9rem;
+  
 }
 
 /* Content card like the mock */
