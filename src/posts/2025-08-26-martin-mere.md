@@ -7,8 +7,6 @@ cover: /images/martin-mere.jpg
 tags: ["days out"]
 ---
 
-# My Trip to Martin Mere Wetland Centre 🦦
-
 On the last week of the holidays we went to **Martin Mere Wetland Centre** in Lancashire with my Nana and Grandad and my little sister Lois.
 
 ---
