@@ -4,20 +4,108 @@ layout: layouts/base.njk
 permalink: /adventures/
 ---
 
-{% extends "layouts/base.njk" %}
+<h1>All Adventures</h1>
 
-{% block content %}
-  <h1>All Adventures</h1>
-
-  <div class="grid">
-    {% for post in collections.posts | reverse %}
-      {% if not post.data.draft %}
-        {% set post = post %}{% include "partials/card.njk" %}
-      {% endif %}
-    {% endfor %}
+<!-- Filter bar -->
+<div class="aa-filter" role="region" aria-label="Filter adventures">
+  <div class="aa-filter__scroller">
+    <button class="chip" data-filter="all" aria-pressed="true">All</button>
+    <button class="chip chip--green" data-filter="nature">Nature</button>
+    <button class="chip chip--yellow" data-filter="days out">Days Out</button>
+    <button class="chip chip--blue" data-filter="holidays">Holidays</button>
+    <button class="chip" data-filter="fun stuff">Fun Stuff</button>
   </div>
 
-  {% if (collections.posts | length) == 0 %}
-    <p class="meta">No adventures yet—come back soon!</p>
-  {% endif %}
-{% endblock %}
+  <div class="aa-filter__search">
+    <input id="aa-search" type="search" placeholder="Search adventures…" aria-label="Search adventures">
+  </div>
+</div>
+
+<!-- Results grid -->
+<div id="aa-grid" class="aa-grid" data-empty="No adventures match your filters.">
+  {% for item in collections.posts | reverse %}
+    {% set tags = (item.data.tags or []) | join(",") | lower %}
+    <div class="aa-cardwrap" data-tags="{{ tags }}" data-title="{{ item.data.title | lower }}">
+      {% set post = item %}{% include "partials/card.njk" %}
+    </div>
+  {% endfor %}
+</div>
+
+<!-- Tiny filtering script -->
+<script>
+(function(){
+  const grid   = document.getElementById('aa-grid');
+  const cards  = Array.from(grid.querySelectorAll('.aa-cardwrap'));
+  const chips  = Array.from(document.querySelectorAll('.aa-filter [data-filter]'));
+  const search = document.getElementById('aa-search');
+
+  function applyFilters() {
+    const activeChip = chips.find(c => c.getAttribute('aria-pressed') === 'true');
+    const tag = activeChip ? activeChip.dataset.filter : 'all';
+    const q = (search.value || '').trim().toLowerCase();
+
+    let visibleCount = 0;
+    cards.forEach(wrap => {
+      const tags  = (wrap.dataset.tags || '');
+      const title = (wrap.dataset.title || '');
+      const tagMatch = (tag === 'all') || tags.split(',').includes(tag);
+      const textMatch = !q || title.includes(q);
+      const show = tagMatch && textMatch;
+      wrap.style.display = show ? '' : 'none';
+      if (show) visibleCount++;
+    });
+
+    // empty state
+    if (!visibleCount) {
+      grid.dataset.state = 'empty';
+      if (!grid.querySelector('.aa-empty')) {
+        const msg = document.createElement('p');
+        msg.className = 'aa-empty';
+        msg.textContent = grid.dataset.empty || 'No results';
+        grid.appendChild(msg);
+      }
+    } else {
+      grid.dataset.state = 'ok';
+      const msg = grid.querySelector('.aa-empty');
+      if (msg) msg.remove();
+    }
+
+    // update URL hash (optional)
+    if (tag && tag !== 'all') {
+      history.replaceState(null, '', '#tag=' + encodeURIComponent(tag) + (q ? '&q=' + encodeURIComponent(q) : ''));
+    } else {
+      history.replaceState(null, '', q ? '#q=' + encodeURIComponent(q) : ' ');
+    }
+  }
+
+  // chip clicks
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.setAttribute('aria-pressed','false'));
+      chip.setAttribute('aria-pressed','true');
+      applyFilters();
+    });
+  });
+
+  // search input
+  search.addEventListener('input', () => applyFilters());
+
+  // initialise from URL hash (? or #)
+  const hash = location.hash.slice(1);
+  if (hash) {
+    const params = new URLSearchParams(hash);
+    const t = params.get('tag');
+    const q = params.get('q');
+    if (t) {
+      const match = chips.find(c => c.dataset.filter === decodeURIComponent(t));
+      if (match) {
+        chips.forEach(c => c.setAttribute('aria-pressed','false'));
+        match.setAttribute('aria-pressed','true');
+      }
+    }
+    if (q) search.value = decodeURIComponent(q);
+  }
+
+  applyFilters();
+})();
+</script>
