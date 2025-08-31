@@ -1,14 +1,34 @@
-<article class="card">
-  <a href="{{ post.url }}">
-    {% if post.data.cover %}<img src="{{ post.data.cover }}" alt="">{% endif %}
-    <h3>{{ post.data.title }}</h3>
-    {% if post.data.tags %}
-      <div class="tags">
-        {% for t in post.data.tags %}
-          <span class="tag {{ "tag--" + t | slug }}">{{ t }}</span>
-        {% endfor %}
-      </div>
+{# Expecting `post` to be an Eleventy collection item #}
+<a class="aa-card" href="{{ post.url }}">
+  <div class="aa-card__media">
+    {# cover comes from front matter: cover: /images/whatever.jpg #}
+    {% set cover = post.data.cover or '/images/sample.jpg' %}
+    <img src="{{ cover }}" alt="">
+  </div>
+
+  <div class="aa-card__body">
+    <div class="aa-card__toprow">
+      {# category pill (first tag) #}
+      {% if post.data.tags and post.data.tags.length %}
+        <span class="aa-pill">
+          {{ post.data.tags[0] }}
+        </span>
+      {% endif %}
+      <span class="aa-meta">
+        {{ post.templateContent | readTime }}
+      </span>
+    </div>
+
+    <h3 class="aa-card__title">{{ post.data.title }}</h3>
+
+    {% if post.data.excerpt %}
+      <p class="aa-card__excerpt">{{ post.data.excerpt }}</p>
     {% endif %}
-    {% if post.data.excerpt %}<p style="margin:.35rem 0 .1rem; opacity:.9">{{ post.data.excerpt }}</p>{% endif %}
-  </a>
-</article>
+
+    <div class="aa-card__meta">
+      <span class="aa-meta">
+        {{ post.date | date("MMM dd, yyyy") }}
+      </span>
+    </div>
+  </div>
+</a>
