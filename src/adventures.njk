@@ -26,15 +26,39 @@ permalink: /adventures/
   <!-- Cards grid -->
   <div id="aa-grid" class="aa-grid">
     {% for p in collections.posts | reverse %}
+      {% set cover = p.data.cover or '/images/sample.jpg' %}
+      {% set tagsList = p.data.tags or [] %}
+      {% set firstTag = tagsList and tagsList.length ? tagsList[0] : '' %}
+
       <div class="aa-cardwrap"
-           data-tags="{{ (p.data.tags or []) | join(',') | lower }}"
+           data-tags="{{ tagsList | join(',') | lower }}"
            data-title="{{ (p.data.title or '') | lower }}"
            data-excerpt="{{ (p.data.excerpt or '') | lower }}">
 
-        {# Nunjucks way: set a variable, then include #}
-        {% set post = p %}
-        {% include "partials/card.njk" %}
+        <a class="aa-card" href="{{ p.url }}">
+          <div class="aa-card__media">
+            <img src="{{ cover }}" alt="">
+          </div>
 
+          <div class="aa-card__body">
+            <div class="aa-card__toprow">
+              {% if firstTag %}
+                <span class="aa-pill">{{ firstTag }}</span>
+              {% endif %}
+              <span class="aa-meta">{{ p.templateContent | readTime }}</span>
+            </div>
+
+            <h3 class="aa-card__title">{{ p.data.title }}</h3>
+
+            {% if p.data.excerpt %}
+              <p class="aa-card__excerpt">{{ p.data.excerpt }}</p>
+            {% endif %}
+
+            <div class="aa-card__meta">
+              <span class="aa-meta">{{ p.date | date("dd/MM/yyyy") }}</span>
+            </div>
+          </div>
+        </a>
       </div>
     {% endfor %}
   </div>
@@ -64,10 +88,8 @@ permalink: /adventures/
         const tags = (w.dataset.tags || '');
         const title = (w.dataset.title || '');
         const excerpt = (w.dataset.excerpt || '');
-
         const tagMatch  = (tag === 'all') || tags.split(',').includes(tag);
         const textMatch = !query || title.includes(query) || excerpt.includes(query);
-
         const show = tagMatch && textMatch;
         w.style.display = show ? '' : 'none';
         if (show) visible++;
