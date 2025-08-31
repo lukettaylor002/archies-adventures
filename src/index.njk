@@ -45,46 +45,45 @@ title: Home
 <!-- Latest Adventures -->
 <section class="container">
   <h1>Latest Adventures</h1>
-  <!-- Cards grid -->
-<div id="aa-grid" class="aa-grid">
-  {% for p in collections.posts | reverse %}
-    {% if loop.index0 >= 3 %}{% break %}{% endif %}
 
-    {% set cover    = p.data.cover or '/images/sample.jpg' %}
-    {% set tagsList = p.data.tags or [] %}
-    {% set firstTag = tagsList | length ? tagsList[0] : '' %}
+  <div id="aa-grid" class="aa-grid">
+    {% for p in collections.latestPosts %}
+      {% set cover    = p.data.cover or '/images/sample.jpg' %}
+      {% set tagsList = p.data.tags or [] %}
+      {% set firstTag = tagsList | length ? tagsList[0] : '' %}
 
-    <div class="aa-cardwrap"
-         data-tags="{{ tagsList | join(',') | lower }}"
-         data-title="{{ (p.data.title or '') | lower }}"
-         data-excerpt="{{ (p.data.excerpt or '') | lower }}">
+      <div class="aa-cardwrap"
+           data-tags="{{ tagsList | join(',') | lower }}"
+           data-title="{{ (p.data.title or '') | lower }}"
+           data-excerpt="{{ (p.data.excerpt or '') | lower }}">
 
-      <a class="aa-card" href="{{ p.url }}">
-        <div class="aa-card__media">
-          <img src="{{ cover }}" alt="">
-        </div>
-
-        <div class="aa-card__body">
-          <div class="aa-card__toprow">
-            {% if firstTag %}<span class="aa-pill">{{ firstTag }}</span>{% endif %}
-            <span class="aa-meta">{{ p.templateContent | readTime }}</span>
+        <a class="aa-card" href="{{ p.url }}">
+          <div class="aa-card__media">
+            <img src="{{ cover }}" alt="{{ p.data.title }}">
           </div>
 
-          <h3 class="aa-card__title">{{ p.data.title }}</h3>
+          <div class="aa-card__body">
+            <div class="aa-card__toprow">
+              {% if firstTag %}<span class="aa-pill">{{ firstTag }}</span>{% endif %}
+              <span class="aa-meta">{{ p.templateContent | readTime }}</span>
+            </div>
 
-          {% if p.data.excerpt %}
-            <p class="aa-card__excerpt">{{ p.data.excerpt }}</p>
-          {% endif %}
+            <h3 class="aa-card__title">{{ p.data.title }}</h3>
 
-          <div class="aa-card__meta">
-            <span class="aa-meta">{{ p.date | date("dd/MM/yyyy") }}</span>
+            {% if p.data.excerpt %}
+              <p class="aa-card__excerpt">{{ p.data.excerpt }}</p>
+            {% endif %}
+
+            <div class="aa-card__meta">
+              <span class="aa-meta">{{ p.date | date("dd/MM/yyyy") }}</span>
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
-  {% endfor %}
-</div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
 </section>
+
 
 <script>
   const btn = document.getElementById('share-any');
