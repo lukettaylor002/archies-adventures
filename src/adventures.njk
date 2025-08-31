@@ -30,21 +30,23 @@ permalink: /adventures/
            data-tags="{{ (p.data.tags or []) | join(',') | lower }}"
            data-title="{{ (p.data.title or '') | lower }}"
            data-excerpt="{{ (p.data.excerpt or '') | lower }}">
-        {% set post = p %}{% include "partials/card.njk" %}
+        {# EXPLICIT: pass post into the partial #}
+        {% include "partials/card.njk" with { post: p } %}
       </div>
     {% endfor %}
   </div>
 
   <p id="aa-empty" class="aa-empty" hidden>No adventures match your filter.</p>
+  <noscript><p class="aa-empty">Enable JavaScript to use filters/search.</p></noscript>
 </section>
 
 <script>
   (function () {
-    const grid     = document.getElementById('aa-grid');
-    const wraps    = Array.from(grid.querySelectorAll('.aa-cardwrap'));
-    const chips    = Array.from(document.querySelectorAll('.aa-filter .chip'));
-    const q        = document.getElementById('aa-q');
-    const empty    = document.getElementById('aa-empty');
+    const grid  = document.getElementById('aa-grid');
+    const wraps = Array.from(grid.querySelectorAll('.aa-cardwrap'));
+    const chips = Array.from(document.querySelectorAll('.aa-filter .chip'));
+    const q     = document.getElementById('aa-q');
+    const empty = document.getElementById('aa-empty');
 
     function activeTag() {
       const activeChip = chips.find(c => c.getAttribute('aria-pressed') === 'true');
@@ -72,7 +74,6 @@ permalink: /adventures/
       empty.hidden = visible !== 0;
     }
 
-    // Chip interactions
     chips.forEach(chip => {
       chip.addEventListener('click', () => {
         chips.forEach(c => c.setAttribute('aria-pressed', 'false'));
@@ -81,7 +82,6 @@ permalink: /adventures/
       });
     });
 
-    // Live search
     q.addEventListener('input', applyFilters);
 
     // Show everything on load
