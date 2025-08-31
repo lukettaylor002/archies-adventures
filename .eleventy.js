@@ -4,9 +4,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("admin");
 
-  // Date filter (Luxon)
+// Date filter (Luxon) — UK format dd/MM/yyyy
 const { DateTime } = require("luxon");
-eleventyConfig.addFilter("date", (dateObj, fmt = "MMM dd, yyyy") =>
+eleventyConfig.addFilter("date", (dateObj, fmt = "dd/LL/yyyy") =>
   DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(fmt)
 );
 
