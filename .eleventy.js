@@ -10,6 +10,12 @@ eleventyConfig.addFilter("date", (dateObj, fmt = "dd/LL/yyyy") =>
   DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(fmt)
 );
 
+  eleventyConfig.addCollection("latestPosts", (api) =>
+  api.getFilteredByGlob("src/posts/*.md")
+     .sort((a,b) => b.date - a.date)
+     .slice(0, 3)
+);
+
 // Read time filter
 eleventyConfig.addFilter("readTime", (content) => {
   const words = (content || "").toString().split(/\s+/).filter(Boolean).length;
