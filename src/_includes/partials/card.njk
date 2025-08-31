@@ -1,21 +1,28 @@
 {# Expecting `post` to be an Eleventy collection item #}
+{# Safe fallbacks across Eleventy versions #}
+{% set bodyHtml = post.templateContent or post.content or "" %}
+{% set cover = post.data.cover or "/images/sample.jpg" %}
+
 <a class="aa-card" href="{{ post.url }}">
   <div class="aa-card__media">
-    {# cover comes from front matter: cover: /images/whatever.jpg #}
-    {% set cover = post.data.cover or '/images/sample.jpg' %}
-    <img src="{{ cover }}" alt="">
+    <img src="{{ cover }}" alt="" loading="lazy" decoding="async">
   </div>
 
   <div class="aa-card__body">
     <div class="aa-card__toprow">
-      {# category pill (first tag) #}
       {% if post.data.tags and post.data.tags.length %}
-        <span class="aa-pill">
-          {{ post.data.tags[0] }}
-        </span>
+        {% set tag = (post.data.tags[0] or "") | lower %}
+        <span class="aa-pill {{ 
+          tag == 'nature'      ? 'aa-pill--green'  :
+          tag == 'days out'    ? 'aa-pill--yellow' :
+          tag == 'holidays'    ? 'aa-pill--blue'   :
+          tag == 'fun stuff'   ? 'aa-pill--fun'    :
+          'aa-pill--default'
+        }}">{{ post.data.tags[0] }}</span>
       {% endif %}
+
       <span class="aa-meta">
-        {{ post.templateContent | readTime }}
+        {{ bodyHtml | readTime }}
       </span>
     </div>
 
@@ -26,9 +33,7 @@
     {% endif %}
 
     <div class="aa-card__meta">
-      <span class="aa-meta">
-        {{ post.date | date("MMM dd, yyyy") }}
-      </span>
+      <span class="aa-meta">{{ post.date | date("MMM dd, yyyy") }}</span>
     </div>
   </div>
 </a>
