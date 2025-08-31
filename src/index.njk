@@ -3,41 +3,23 @@ layout: layouts/base.njk
 title: Home
 ---
 
-<section class="hero-banner">
-  <div class="hero-badge">
-    <img src="/images/logo-badge.svg" alt="Archie’s Adventures">
-  </div>
+<section class="aa-hero aa-hero--pattern">
+  <div class="aa-hero__inner">
+    <img class="aa-hero__logo" src="/images/logo-badge.svg" alt="Archie’s Adventures" width="100" height="100" />
+    <h1 class="aa-hero__title">Welcome to Archie’s Adventures</h1>
+    <p class="aa-hero__lead">New family-friendly adventures, straight to your inbox.</p>
 
-  <h1>Welcome to <span class="accent">Archie’s Adventures!</span> 🌍</h1>
-  <p>
-    Join me as I explore amazing places, discover cool things, and share incredible stories!  
-    Every adventure is a chance to learn something new. Ready to explore with me? 🚀
-  </p>
+    <form name="newsletter" method="POST" data-netlify="true" action="/thanks" netlify-honeypot="bot-field" class="hero-min-sub">
+      <input type="hidden" name="form-name" value="newsletter" />
+      <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
 
-  <!-- Subscribe form -->
-  <form name="hero-subscribe" method="POST" data-netlify="true" action="/thanks" netlify-honeypot="bot-field" class="hero-subscribe">
-    <input type="hidden" name="form-name" value="hero-subscribe">
-    <p class="hidden">
-      <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
-    </p>
+      <div class="hero-min-sub__row">
+        <input aria-label="Your email" type="email" name="email" placeholder="Your email" required />
+        <button class="btn-2tone" type="submit">Subscribe</button>
+      </div>
 
-    <div class="hero-subscribe__row">
-      <input type="email" name="email" placeholder="Enter your email" required>
-      <button type="submit" class="btn-2tone">Subscribe</button>
-    </div>
-    <label class="hero-subscribe__agree">
-      <input type="checkbox" name="agree" required>
-      I agree to receive adventure updates ✨
-    </label>
-  </form>
-
-  <!-- Share buttons -->
-
-  <div class="hero-share">
-    <span>Share Archie’s Adventures:</span>
-    <a href="#" id="share-any" class="hero-share__native">📤 Share</a>
-    <a href="https://twitter.com/intent/tweet?text=Check+out+Archie%27s+Adventures!+https://archiesadventures.blog" target="_blank">🐦 Twitter</a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https://archiesadventures.blog" target="_blank">📘 Facebook</a>
+      <small class="hero-min-sub__note">Unsubscribe anytime.</small>
+    </form>
   </div>
 </section>
 
