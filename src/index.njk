@@ -3,36 +3,42 @@ layout: layouts/base.njk
 title: Home
 ---
 
-<!-- Hero Banner -->
-<section class="aa-hero">
-  <div class="aa-hero__bg"></div>
-  <div class="aa-hero__inner">
+<section class="hero-banner">
+  <div class="hero-badge">
+    <img src="/images/logo-badge.svg" alt="Archie’s Adventures">
+  </div>
 
-    <div class="aa-hero__badge">
-      <img src="/images/logo-badge.svg" alt="Archie’s Adventures" width="64" height="64">
-    </div>
+  <h1>Welcome to <span class="accent">Archie’s Adventures!</span> 🌍</h1>
+  <p>
+    Join me as I explore amazing places, discover cool things, and share incredible stories!  
+    Every adventure is a chance to learn something new. Ready to explore with me? 🚀
+  </p>
 
-    <h1 class="aa-hero__title">
-      Welcome to <span class="aa-accent">Archie’s Adventures!</span> 🌍
-    </h1>
-
-    <p class="aa-hero__lead">
-      Join me as I explore amazing places, discover cool things, and share incredible stories!  
-      Every adventure is a chance to learn something new.  
-      Ready to explore with me?<span class="aa-pop">Let’s go! 🚀</span>
+  <!-- Subscribe form -->
+  <form name="hero-subscribe" method="POST" data-netlify="true" action="/thanks" netlify-honeypot="bot-field" class="hero-subscribe">
+    <input type="hidden" name="form-name" value="hero-subscribe">
+    <p class="hidden">
+      <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
     </p>
 
-    <div class="aa-hero__actions">
-      <a href="/adventures/" class="btn-2tone aa-btn-lg">
-        <span class="aa-ico">+</span> Start New Adventure
-      </a>
-      <a href="/adventures/" class="aa-btn-outline aa-btn-lg">
-        <span class="aa-ico">🔍</span> Explore Adventures
-      </a>
+    <div class="hero-subscribe__row">
+      <input type="email" name="email" placeholder="Enter your email" required>
+      <button type="submit" class="btn-2tone">Subscribe</button>
     </div>
+    <label class="hero-subscribe__agree">
+      <input type="checkbox" name="agree" required>
+      I agree to receive adventure updates ✨
+    </label>
+  </form>
 
+  <!-- Share buttons -->
+  <div class="hero-share">
+    <span>Share Archie’s Adventures:</span>
+    <a href="https://twitter.com/intent/tweet?text=Check+out+Archie%27s+Adventures!+https://archiesadventures.blog" target="_blank">🐦 Twitter</a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://archiesadventures.blog" target="_blank">📘 Facebook</a>
   </div>
 </section>
+
 
 <!-- Latest Adventures -->
 <section class="container">
