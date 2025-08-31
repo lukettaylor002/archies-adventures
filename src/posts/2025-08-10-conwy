@@ -1,1 +1,9 @@
+---
+title: "Holiday in Conwy 🎢"
+date: 2025-08-11
+layout: layouts/post.njk
+excerpt: A fun holiday in Conwy with my grandparents - beaches, castles and hills!
+cover: /images/conwy.jpg
+tags: ["holidays"]
+---
 
