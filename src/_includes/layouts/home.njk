@@ -26,20 +26,17 @@
   </div>
 </section>
 
-<section class="container">
+  <section>
   <h2>Latest Adventures</h2>
   <div class="grid">
-    {% for p in collections.posts | reverse | slice(0, 6) %}
-      <article class="card">
-        <a href="{{ p.url }}">
-          {% if p.data.cover %}<img src="{{ p.data.cover }}" alt="">{% endif %}
-          <h3>{{ p.data.title }}</h3>
-          {% if p.data.excerpt %}<p class="meta">{{ p.data.excerpt }}</p>{% endif %}
-          <p class="meta">{{ p.date | date("MMM d, yyyy") }}</p>
-        </a>
-      </article>
+    {% for post in collections.posts | reverse | slice(0,6) %}
+      {% set p = post %}
+      {% include "partials/card.njk" %}
     {% endfor %}
   </div>
 </section>
+
+
+
 
 {% endblock %}
