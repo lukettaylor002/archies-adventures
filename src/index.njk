@@ -9,17 +9,23 @@ title: Home
     <h1 class="aa-hero__title">Welcome to Archie’s Adventures</h1>
     <p class="aa-hero__lead">New family-friendly adventures, straight to your inbox.</p>
 
-    <form name="newsletter" method="POST" data-netlify="true" action="/thanks" netlify-honeypot="bot-field" class="hero-min-sub">
-      <input type="hidden" name="form-name" value="newsletter" />
-      <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+    <!-- Netlify Forms -->
+      <form name="newsletter" method="POST" data-netlify="true"
+            netlify-honeypot="bot-field" action="/thanks" class="aa-sub__form">
+        <input type="hidden" name="form-name" value="newsletter">
+        <p class="sr-only"><label>Don’t fill this out: <input name="bot-field"></label></p>
 
-      <div class="hero-min-sub__row">
-        <input aria-label="Your email" type="email" name="email" placeholder="Your email" required />
-        <button class="btn-2tone" type="submit">Subscribe</button>
-      </div>
+        <div class="aa-sub__row">
+          <input aria-label="Your email" type="email" name="email" placeholder="Your email" required>
+          <button class="aa-sub__btn" type="submit">Subscribe</button>
+        </div>
 
-      <small class="hero-min-sub__note">Unsubscribe anytime.</small>
-    </form>
+        <!-- Optional consent line under the input row -->
+        <label class="aa-sub__agree">
+          <input type="checkbox" name="agree" required>
+          I agree to receive adventure updates ✨
+        </label>
+      </form>
   </div>
 </section>
 
